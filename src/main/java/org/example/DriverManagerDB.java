@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.CsvController.CsvController;
 import org.example.Model.Customer;
 
 import java.sql.*;
@@ -16,8 +15,6 @@ public class DriverManagerDB {
     }
 
     public void connectToDb(){
-
-
 
         // 2) Get a connection (driver auto-loads if the JAR is on the class-path)
         try (Connection connection = java.sql.DriverManager.getConnection(url, username, password);
@@ -59,5 +56,29 @@ public class DriverManagerDB {
             throw new RuntimeException(e);
         }
     }
+
+    public Customer returnRecord(int customerId) throws SQLException {
+
+        String record = "SELECT * FROM customers WHERE id = " + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
+        int id = 0;
+        String name = null;
+        int money = 0;
+        String cusPassword = null;
+
+        try (Connection connection = connect();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(record)) {
+
+            while (rs.next()) {
+                id = rs.getInt("id");           // error here probably
+                name = rs.getString("nickname");
+                money = rs.getInt("money");
+                cusPassword = rs.getString("password");
+            }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        return new Customer(id, name, money, cusPassword);
+        }
 
 }

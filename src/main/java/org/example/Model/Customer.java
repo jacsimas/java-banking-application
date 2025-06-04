@@ -9,10 +9,11 @@ public class Customer{
      private String realName;
      private String email;
 
-    public Customer(int i, String ss, int i1) {
+    public Customer(int i, String ss, int i1, String password) {
         this.Id = i;
         this.user = ss;
         this.moneyInCents = i1;
+        this.password = password;
     }
 
     public  int getId(){

@@ -59,21 +59,27 @@ public class DriverManagerDB {
 
     public Customer returnRecord(int customerId) throws SQLException {
 
-        String record = "SELECT * FROM customers WHERE id = " + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
         int id = 0;
         String name = null;
         int money = 0;
         String cusPassword = null;
+        String record = "SELECT * FROM customers WHERE id = ?";
+                 // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
 
         try (Connection connection = connect();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(record)) {
+                PreparedStatement ps = connection.prepareStatement(record)) {
+            ps.setLong(1, 3);
 
-            while (rs.next()) {
+            try (ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) {
                 id = rs.getInt("id");           // error here probably
                 name = rs.getString("nickname");
                 money = rs.getInt("money");
                 cusPassword = rs.getString("password");
+            }else {
+                System.out.println("No row found for id = 42");
+            }
             }
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
@@ -82,3 +88,4 @@ public class DriverManagerDB {
         }
 
 }
+

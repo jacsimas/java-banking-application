@@ -18,6 +18,11 @@ public class CustomerActionsControllerTest {
     @Test
     public void sendMoneyToSomeone() {
 
+        CustomerActionsController cacontroller = new CustomerActionsController();
+        int idSenderCustomer;
+        int idReceiverCustomer;
+        int amountToSend;
+        cacontroller.sendMoneyToSomeone(idSenderCustomer, idReceiverCustomer, amountToSend);
     }
 
 

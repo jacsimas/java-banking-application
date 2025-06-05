@@ -1,0 +1,60 @@
+package org.example.Controller;
+
+import org.example.DBController;
+import org.example.Model.Customer;
+import org.junit.Test;
+
+import static org.junit.Assert.fail;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.sql.SQLException;
+
+public class DBControllerTest {
+
+    DBController dbcontroller = new DBController();
+
+    public DBControllerTest() throws SQLException {
+    }
+
+    @Test
+    public void addCustomerRecordTest() throws SQLException {
+
+        String name = "jennifer";
+        int money = 18500;
+        String password  = "pass4";
+        boolean recordadded = dbcontroller.addCustomerRecord(name,money, password);
+
+
+        assertThat(recordadded).isTrue();
+    }
+
+    @Test
+    public void returnRecord() throws SQLException {
+
+        int customerId = 3;
+//        String customername = customer.getUser();
+//        int getid = customer.getId();
+//        String getpassword = customer.getPassword();
+//        int getmoney = customer.getMoneyInCents();
+
+        Customer returnedCustomer = dbcontroller.returnRecord(customerId);
+        String nickname = returnedCustomer.getUser();
+
+        assertThat(nickname).isEqualTo("johnny");
+
+    }
+
+    @Test
+    public void updateCustomerFundsTest(){
+
+        int customerId = 2;
+        int newAmount = 11000;
+
+        int AmountUpdated = dbcontroller.updateCustomerFunds(customerId, newAmount);
+
+        assertThat(AmountUpdated).isEqualTo(1);
+
+    }
+
+}

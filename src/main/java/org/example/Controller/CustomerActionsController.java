@@ -8,16 +8,17 @@ import java.text.SimpleDateFormat;
 
 public class CustomerActionsController{
 
-/*
-    public int putMoneyIntoAccount(int actualCustomerId, int depositAmount) throws IOException {
-
-    }
+//
+//    public int putMoneyIntoAccount(int actualCustomerId, int depositAmount) throws IOException {
+//
+//    }
 
 
     public boolean sendMoneyToSomeone(int idSenderCustomer, int idReceiverCustomer, int amountToSend) throws IOException {
 
     }
 
+/*
     private void insufficientFundsMessage() {
         System.out.println("You don't have the amount selected to continue with this transaction!");
         // should ask to retype the amount again on UI

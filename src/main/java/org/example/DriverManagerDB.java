@@ -6,9 +6,13 @@ import java.sql.*;
 
 public class DriverManagerDB {
 
+    Connection connection = connect();
     private final String url = "jdbc:postgresql://localhost:5432/findb";      // put into properties file
     private final String username = "simon";
     private final String password = "password";
+
+    public DriverManagerDB() throws SQLException {
+    }
 
     public Connection connect() throws SQLException {
     return java.sql.DriverManager.getConnection(url, username, password);
@@ -34,7 +38,7 @@ public class DriverManagerDB {
     public void addCustomerRecord(String name, int money, String password) {
         String record = "INSERT INTO customers (nickname, money, password) " + "VALUES (?, ?, ?)";
 
-        try (Connection connection = connect();
+        try (
                 PreparedStatement ps = connection.prepareStatement(record,
                 Statement.RETURN_GENERATED_KEYS)) {
 
@@ -66,7 +70,7 @@ public class DriverManagerDB {
         String record = "SELECT * FROM customers WHERE id = ?";
                  // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
 
-        try (Connection connection = connect();
+        try (
                 PreparedStatement ps = connection.prepareStatement(record)) {
             ps.setLong(1, 3);
 

@@ -12,6 +12,11 @@ import java.sql.SQLException;
 
 public class DriverManagerDBTest {
 
+    DriverManagerDB drivermanagerdb = new DriverManagerDB();
+
+    public DriverManagerDBTest() throws SQLException {
+    }
+
     @Test
     public void addCustomerRecordTest() {
 
@@ -22,11 +27,23 @@ public class DriverManagerDBTest {
 
         int customerId = 3;
 
-        DriverManagerDB drivermanagerdb = new DriverManagerDB();
+
         Customer returnedCustomer = drivermanagerdb.returnRecord(customerId);
         String nickname = returnedCustomer.getUser();
 
         assertThat(nickname).isEqualTo("johnny");
+
+    }
+
+    @Test
+    public void updateCustomerFundsTest(){
+
+        int customerId = 3;
+        int newAmount = 11000;
+
+        int AmountUpdated = drivermanagerdb.updateCustomerFunds(customerId, newAmount);
+
+        assertThat(AmountUpdated).isEqualTo(1);
 
     }
 }

@@ -36,10 +36,10 @@ public class DriverManagerDB {
     }
 
     public void addCustomerRecord(String name, int money, String password) {
-        String record = "INSERT INTO customers (nickname, money, password) " + "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO customers (nickname, money, password) " + "VALUES (?, ?, ?)";
 
         try (
-                PreparedStatement ps = connection.prepareStatement(record,
+                PreparedStatement ps = connection.prepareStatement(sql,
                 Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, name);
@@ -67,11 +67,11 @@ public class DriverManagerDB {
         String name = null;
         int money = 0;
         String cusPassword = null;
-        String record = "SELECT * FROM customers WHERE id = ?";
+        String sql = "SELECT * FROM customers WHERE id = ?";
                  // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
 
         try (
-                PreparedStatement ps = connection.prepareStatement(record)) {
+                PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, 3);
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -85,11 +85,28 @@ public class DriverManagerDB {
                 System.out.println("No row found for id = 42");
             }
             }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
             }
         return new Customer(id, name, money, cusPassword);
         }
 
+    public int updateCustomerFunds(int customerId, int newAmount) {
+
+        String sql = "UPDATE customers SET money = ? WHERE id = ? ";
+        int updated = 0;
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setInt(1, newAmount);
+            ps.setInt(2,customerId);
+
+            updated = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+         }
+        return updated;
+    }
 }
 

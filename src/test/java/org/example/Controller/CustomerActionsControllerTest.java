@@ -14,16 +14,16 @@ public class CustomerActionsControllerTest {
     public void depositMoneyTest (){
 
     }
-
-    @Test
-    public void sendMoneyToSomeone() {
-
-        CustomerActionsController cacontroller = new CustomerActionsController();
-        int idSenderCustomer;
-        int idReceiverCustomer;
-        int amountToSend;
-        cacontroller.sendMoneyToSomeone(idSenderCustomer, idReceiverCustomer, amountToSend);
-    }
+//
+//    @Test
+//    public void sendMoneyToSomeone() {
+//
+//        CustomerActionsController cacontroller = new CustomerActionsController();
+//        int idSenderCustomer;
+//        int idReceiverCustomer;
+//        int amountToSend;
+//        cacontroller.sendMoneyToSomeone(idSenderCustomer, idReceiverCustomer, amountToSend);
+//    }
 
 
 }

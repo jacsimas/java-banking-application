@@ -63,26 +63,24 @@ public class DBController {
 
     public Customer returnRecord(int customerId) throws SQLException {
 
-        int id = 0;
+        int id = customerId;
         String name = null;
         int money = 0;
         String cusPassword = null;
-        String sql = "SELECT * FROM customers WHERE id = ?";
+        String sql = "SELECT id, nickname, money, password FROM customers WHERE id = ?";
         // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
 
         try (
                 PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(1, 3);
+            ps.setLong(1, id);
 
             try (ResultSet rs = ps.executeQuery()) {
 
-                if (rs.next()) {
+                while (rs.next()) {
                     id = rs.getInt("id");           // error here probably
                     name = rs.getString("nickname");
                     money = rs.getInt("money");
                     cusPassword = rs.getString("password");
-                }else {
-                    System.out.println("No row found for id = 42");
                 }
             }
         } catch (SQLException e) {
@@ -107,6 +105,31 @@ public class DBController {
             System.out.println(e.getMessage());
         }
         return updated;
+    }
+
+    public int findCustomerByUsername(String name){
+        int id = 0;
+        String sql = "SELECT * FROM customers WHERE nickname = ?";
+        // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setLong(2, 1);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+                    name = rs.getString("nickname");
+                    id = rs.getInt("id");
+                    return id;
+                }else {
+                    System.out.println("No row found for nickname = " + name);
+
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return id;
     }
 
 }

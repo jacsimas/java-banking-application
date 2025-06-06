@@ -57,4 +57,15 @@ public class DBControllerTest {
 
     }
 
+    @Test
+    public void findCustomerByUsernameTest() {
+
+        String name = "barbara";
+
+       int returnedId =  dbcontroller.findCustomerByUsername(name);
+
+       assertThat(returnedId).isEqualTo(6);
+
+    }
+
 }

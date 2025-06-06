@@ -14,9 +14,9 @@ public class CustomerActionsController{
 //    }
 
 
-    public boolean sendMoneyToSomeone(int idSenderCustomer, int idReceiverCustomer, int amountToSend) throws IOException {
-
-    }
+//    public boolean sendMoneyToSomeone(int idSenderCustomer, int idReceiverCustomer, int amountToSend) throws IOException {
+//
+//    }
 
 /*
     private void insufficientFundsMessage() {

@@ -60,11 +60,11 @@ public class DBControllerTest {
     @Test
     public void findCustomerByUsernameTest() {
 
-        String name = "barbara";
+        String name = "jennifer";
 
        int returnedId =  dbcontroller.findCustomerByUsername(name);
 
-       assertThat(returnedId).isEqualTo(6);
+       assertThat(returnedId).isEqualTo(8);
 
     }
 

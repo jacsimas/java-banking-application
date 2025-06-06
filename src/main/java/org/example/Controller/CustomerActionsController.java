@@ -1,17 +1,34 @@
 package org.example.Controller;
 
+import org.example.DBController;
 import org.example.Model.Customer;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 
 public class CustomerActionsController{
 
-//
-//    public int putMoneyIntoAccount(int actualCustomerId, int depositAmount) throws IOException {
-//
-//    }
+    DBController dbcontroller = new DBController();
+
+    public CustomerActionsController() throws SQLException {
+    }
+
+    public int depositMoney(String customerName, int depositAmount) throws IOException, SQLException {
+
+        int returnedId = dbcontroller.findCustomerByUsername(customerName);
+        Customer customer = dbcontroller.returnRecord(returnedId);
+        TransactionController transactions = new TransactionController();
+        int oldAmount = customer.getMoneyInCents();
+        int newAmount = transactions.receiveMoneyTransaction(oldAmount, depositAmount);
+        int deposited = dbcontroller.updateCustomerFunds(returnedId, newAmount);
+        if (deposited == 1){
+            return 1;
+        }
+        else return 0;
+
+    }
 
 
 //    public boolean sendMoneyToSomeone(int idSenderCustomer, int idReceiverCustomer, int amountToSend) throws IOException {

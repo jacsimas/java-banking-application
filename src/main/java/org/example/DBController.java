@@ -89,6 +89,30 @@ public class DBController {
         return new Customer(id, name, money, cusPassword);
     }
 
+
+    public int findCustomerByUsername(String name){
+        int id = 0;
+        String sql = "SELECT id FROM customers WHERE nickname = ?";
+        // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, name);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    id = rs.getInt("id");
+                    return id;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
+//  else {
+//        System.out.println("No row found for nickname = " + name);
+//    }
     public int updateCustomerFunds(int customerId, int newAmount) {
 
         String sql = "UPDATE customers SET money = ? WHERE id = ? ";
@@ -104,32 +128,7 @@ public class DBController {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return updated;
-    }
-
-    public int findCustomerByUsername(String name){
-        int id = 0;
-        String sql = "SELECT * FROM customers WHERE nickname = ?";
-        // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
-        try (
-                PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setLong(2, 1);
-
-            try (ResultSet rs = ps.executeQuery()) {
-
-                if (rs.next()) {
-                    name = rs.getString("nickname");
-                    id = rs.getInt("id");
-                    return id;
-                }else {
-                    System.out.println("No row found for nickname = " + name);
-
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return id;
+        return updated;  // 1
     }
 
 }

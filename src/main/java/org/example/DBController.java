@@ -33,11 +33,10 @@ public class DBController {
     }
 */
 
-    public boolean addCustomerRecord(String name, int money, String password) {
+    public void addCustomerRecord(String name, int money, String password) throws SQLException {
         String sql = "INSERT INTO customers (nickname, money, password) " + "VALUES (?, ?, ?)";
 
-        try (
-                PreparedStatement ps = connection.prepareStatement(sql,
+                       PreparedStatement ps = connection.prepareStatement(sql,
                         Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, name);
@@ -52,13 +51,8 @@ public class DBController {
                 if (keys.next()) {
                     long id = keys.getLong(1);                      // ← your SERIAL / IDENTITY value
                     System.out.println("New customer id = " + id);
-                    return true;
                 }
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return false;
     }
 
     public Customer returnRecord(int customerId) throws SQLException {
@@ -113,11 +107,11 @@ public class DBController {
 //  else {
 //        System.out.println("No row found for nickname = " + name);
 //    }
-    public int updateCustomerFunds(int customerId, int newAmount) {
+    public int updateCustomerFunds(int customerId, int newAmount) {  //void
 
         String sql = "UPDATE customers SET money = ? WHERE id = ? ";
         int updated = 0;
-        try (
+        try ( //
                 PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, newAmount);

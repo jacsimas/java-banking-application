@@ -23,7 +23,7 @@ public class DBControllerTest {
         String name = "jennifer";
         int money = 18500;
         String password  = "pass4";
-        boolean recordadded = dbcontroller.addCustomerRecord(name,money, password);
+       dbcontroller.addCustomerRecord(name,money, password);
 
 
         assertThat(recordadded).isTrue();

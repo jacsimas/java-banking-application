@@ -18,7 +18,7 @@ public class CustomerActionsControllerTest {
 
         CustomerActionsController customerActionsController = new CustomerActionsController();
         int moneydepositedupdated = customerActionsController.depositMoney(name, deposit);
-
+    
         assertThat(moneydepositedupdated).isEqualTo(1);
 
     }

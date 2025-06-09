@@ -10,27 +10,29 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CustomerServicesTest {
 
+    CustomerServices customerActionsController = new CustomerServices();
+
+    public CustomerServicesTest() throws SQLException {
+    }
+
     @Test
     public void depositMoneyTest () throws IOException, SQLException {
         String name = "jennifer";
         int deposit = 22000;
 
-        CustomerServices customerActionsController = new CustomerServices();
        // int moneydepositedupdated = customerActionsController.depositMoney(name, deposit);
     
       //  assertThat(moneydepositedupdated).isEqualTo(1);
 
     }
 //
-//    @Test
-//    public void sendMoneyToSomeone() {
-//
-//        CustomerActionsController cacontroller = new CustomerActionsController();
-//        int idSenderCustomer;
-//        int idReceiverCustomer;
-//        int amountToSend;
-//        cacontroller.sendMoneyToSomeone(idSenderCustomer, idReceiverCustomer, amountToSend);
-//    }
+    @Test
+    public void sendMoneyToSomeoneTest() throws SQLException, IOException {
+
+        customerActionsController.sendMoneyToSomeone("jennifer", "derry", 8000);
+        // what if transaction breaks for some reason? or if he doesn't receive money? or if she sends money,
+        // but he doesn't receive?
+    }
 
 
 }

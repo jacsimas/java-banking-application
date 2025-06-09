@@ -10,6 +10,7 @@ import java.sql.SQLException;
 public class CustomerServices {
 
     DBController dbcontroller = new DBController();
+    TransactionController transactions = new TransactionController();
 
     public CustomerServices() throws SQLException {
     }
@@ -18,7 +19,6 @@ public class CustomerServices {
 
         int returnedId = dbcontroller.findCustomerByUsername(customerName);
         Customer customer = dbcontroller.returnRecord(returnedId);
-        TransactionController transactions = new TransactionController();
         int oldAmount = customer.getMoneyInCents();
         int newAmount = transactions.receiveMoneyTransaction(oldAmount, depositAmount);
         boolean fundsupdated = dbcontroller.updateCustomerFunds(returnedId, newAmount);
@@ -28,9 +28,25 @@ public class CustomerServices {
     }
 
 
-//    public boolean sendMoneyToSomeone(int idSenderCustomer, int idReceiverCustomer, int amountToSend) throws IOException {
-//
-//    }
+    public boolean sendMoneyToSomeone(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws IOException, SQLException {
+
+        int senderreturnedId = dbcontroller.findCustomerByUsername(nameSenderCustomer);
+        Customer sendercustomer = dbcontroller.returnRecord(senderreturnedId);
+        int receiverreturnedId = dbcontroller.findCustomerByUsername(nameReceiverCustomer);
+        Customer receivercustomer = dbcontroller.returnRecord(receiverreturnedId);
+
+        int senderMoney = sendercustomer.getMoneyInCents();
+        int receiverMoney = receivercustomer.getMoneyInCents();
+        boolean hasenough = transactions.checkIfCustomerHasFundsToMakeTransaction(senderMoney, amountToSend);
+        if (hasenough) {
+            int newsenderamount = transactions.sendMoneyTransaction(senderMoney, amountToSend);
+            int newreceiveramount = transactions.receiveMoneyTransaction(receiverMoney, amountToSend);
+            dbcontroller.updateCustomerFunds(senderreturnedId, newsenderamount);
+            dbcontroller.updateCustomerFunds(receiverreturnedId, newreceiveramount);
+            return true;
+        }
+        return false;
+    }
 
 /*
     private void insufficientFundsMessage() {

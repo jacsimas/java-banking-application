@@ -37,7 +37,7 @@ public class DBController {
         String sql = "INSERT INTO customers (nickname, money, password) " + "VALUES (?, ?, ?)";
 
                        PreparedStatement ps = connection.prepareStatement(sql,
-                        Statement.RETURN_GENERATED_KEYS)) {
+                        Statement.RETURN_GENERATED_KEYS);{
 
             ps.setString(1, name);
             ps.setInt(2, money);
@@ -53,6 +53,7 @@ public class DBController {
                     System.out.println("New customer id = " + id);
                 }
             }
+    }
     }
 
     public Customer returnRecord(int customerId) throws SQLException {
@@ -107,7 +108,8 @@ public class DBController {
 //  else {
 //        System.out.println("No row found for nickname = " + name);
 //    }
-    public int updateCustomerFunds(int customerId, int newAmount) {  //void
+
+    public boolean updateCustomerFunds(int customerId, int newAmount) {  //void
 
         String sql = "UPDATE customers SET money = ? WHERE id = ? ";
         int updated = 0;
@@ -121,8 +123,11 @@ public class DBController {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return true;
         }
-        return updated;  // 1
+        return false;
     }
 
 }
+
+

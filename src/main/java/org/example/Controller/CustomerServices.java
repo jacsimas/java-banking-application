@@ -5,29 +5,26 @@ import org.example.Model.Customer;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 
 
-public class CustomerActionsController{
+public class CustomerServices {
 
     DBController dbcontroller = new DBController();
 
-    public CustomerActionsController() throws SQLException {
+    public CustomerServices() throws SQLException {
     }
 
-    public int depositMoney(String customerName, int depositAmount) throws IOException, SQLException {
+    public void depositMoney(String customerName, int depositAmount) throws IOException, SQLException {
 
         int returnedId = dbcontroller.findCustomerByUsername(customerName);
         Customer customer = dbcontroller.returnRecord(returnedId);
         TransactionController transactions = new TransactionController();
         int oldAmount = customer.getMoneyInCents();
         int newAmount = transactions.receiveMoneyTransaction(oldAmount, depositAmount);
-        int deposited = dbcontroller.updateCustomerFunds(returnedId, newAmount);
-        if (deposited == 1){
-            return 1;
+        boolean fundsupdated = dbcontroller.updateCustomerFunds(returnedId, newAmount);
+        if (fundsupdated){
+            System.out.println(customerName + " funds were updated!");
         }
-         return 0;
-
     }
 
 

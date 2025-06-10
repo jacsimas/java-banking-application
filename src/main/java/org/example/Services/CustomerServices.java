@@ -28,7 +28,7 @@ public class CustomerServices {
         }
     }
 
-
+ // what if funds insufficient? add error handlers
     public boolean sendMoneyToSomeone(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws IOException, SQLException {
 
         int senderreturnedId = dbcontroller.findCustomerByUsername(nameSenderCustomer);

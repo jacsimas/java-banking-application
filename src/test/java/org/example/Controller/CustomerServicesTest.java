@@ -30,7 +30,7 @@ public class CustomerServicesTest {
     @Test
     public void sendMoneyToSomeoneTest() throws SQLException, IOException {
 
-        customerActionsController.sendMoneyToSomeone("john", "jennifer", 10000);
+        customerActionsController.sendMoneyToSomeone("jennifer", "john", 4000);
         // what if transaction breaks for some reason? or if he doesn't receive money? or if she sends money,
         // but he doesn't receive?
     }

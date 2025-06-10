@@ -182,6 +182,79 @@ public class DBController {
         return new TransactionAudit(id, sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname, time);
     }
 
+    public void insertIntoFriendships(int senderId, int receiverId) throws SQLException {
+        String sql = "INSERT INTO friendships (customer_id, friend_id) VALUES (?, ?)";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setLong(1, senderId);    // customer_id
+        ps.setLong(2, receiverId);     // friend_id
+        ps.executeUpdate();
+    }
+
+    public boolean checkIfHasFriend(int senderId, int receiverId) throws SQLException {
+        String sql = "SELECT FROM friendships WHERE customer_id = ? AND friend_id = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setLong(1, senderId);
+        ps.setLong(2, receiverId);
+
+        ResultSet rs = ps.executeQuery();
+        return rs.next();
+    }
+
+    public void insertIntoTransfers(int senderId, int receiverId, int amount) throws SQLException {
+
+        PreparedStatement addTx = connection.prepareStatement("INSERT INTO transfers (sender_id, receiver_id, amount_cents) VALUES (?,?,?)");
+        addTx.setLong(1, senderId);
+        addTx.setLong(2, receiverId);
+        addTx.setLong(3, amount);
+        addTx.executeUpdate();
+    }
+
+    public void insertIntoTransferTotals1(int senderId, int receiverId, int amount) throws SQLException {
+        PreparedStatement upsert1 = connection.prepareStatement(
+                """
+                INSERT INTO transfer_totals (customer_id, friend_id, sent_cents)
+                VALUES (?, ?, ?)
+                ON CONFLICT (customer_id, friend_id)
+                DO UPDATE SET sent_cents = transfer_totals.sent_cents + EXCLUDED.sent_cents
+                """);
+            upsert1.setLong(1, senderId);
+            upsert1.setLong(2, receiverId);
+            upsert1.setLong(3, amount);
+            upsert1.executeUpdate();
+    }
+
+    public void insertIntoTransferTotals2(int senderId, int receiverId, int amount) throws SQLException {
+        PreparedStatement upsert2 = connection.prepareStatement(
+                """
+                        INSERT INTO transfer_totals (customer_id, friend_id, received_cents)
+                        VALUES (?, ?, ?)
+                        ON CONFLICT (customer_id, friend_id)
+                        DO UPDATE SET received_cents = transfer_totals.received_cents + EXCLUDED.received_cents
+                        """);
+        upsert2.setLong(1, receiverId);
+        upsert2.setLong(2, senderId);
+        upsert2.setLong(3, amount);
+        upsert2.executeUpdate();
+    }
+
+        public void createTable() throws SQLException {
+        String sql = """ 
+        CREATE TABLE IF NOT EXISTS test (
+        id  BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+        friend_name TEXT NOT NULL,
+        friend_status TEXT NOT NULL,
+        total_money_sent BIGINT NOT NULL,
+        total_money_received BIGINT NOT NULL,
+        since_when TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+        );
+        """;
+
+        Statement st = connection.createStatement();
+            st.executeUpdate(sql);
+
+    }
+
 }
 
 

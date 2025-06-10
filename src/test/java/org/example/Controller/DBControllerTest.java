@@ -68,6 +68,19 @@ public class DBControllerTest {
 
     }
 
+ @Test
+    public void insertIntoFriendshipsTest() throws SQLException {
+     int senderId = 5;
+     int receiverId = 3;
 
+     dbcontroller.insertIntoFriendships(senderId, receiverId);
+ }
+
+ @Test
+    public void checkIfHasFriendTest() throws SQLException {
+      boolean isfriend = dbcontroller.checkIfHasFriend(3, 2);
+        // fix this, now it is only one way check
+        assertThat(isfriend).isTrue();
+ }
 
 }

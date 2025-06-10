@@ -1,5 +1,6 @@
 package org.example;
 import org.example.Model.Customer;
+import org.example.Model.TransactionAudit;
 
 import java.sql.*;
 import java.sql.DriverManager;
@@ -126,6 +127,59 @@ public class DBController {
             return true;
         }
         return false;
+    }
+
+    public void createTransactionAudit(int senderId, String senderName, int moneyInCents, int getterId, String getterName) throws SQLException {
+        String sql = "INSERT INTO transactions_audit (sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname) " + "VALUES (?, ?, ?, ?, ?)";
+
+        PreparedStatement ps = connection.prepareStatement(sql,
+                Statement.RETURN_GENERATED_KEYS);
+        {
+
+            ps.setInt(1, senderId);
+            ps.setString(2, senderName);
+            ps.setInt(3, moneyInCents);
+            ps.setInt(4, getterId);
+            ps.setString(5, getterName);
+
+            int rows = ps.executeUpdate();                          // returns 1
+            System.out.println("Rows inserted: " + rows);
+        }
+    }
+
+    public TransactionAudit returnTransactionAudit(int transactionid) throws SQLException {
+
+        int id = transactionid;
+        int sender_id = 0;
+        String sender_nickname = null;
+        int amount_sent = 0;
+        int receiver_id = 0;
+        String receiver_nickname = null;
+        String time = null;
+
+        String sql = "SELECT id, sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname FROM transactions_audit WHERE id = ?";
+        // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
+
+        try (
+                PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setLong(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    id = rs.getInt("id");
+                    sender_id = rs.getInt("sender_id");
+                    sender_nickname = rs.getString("sender_nickname");
+                    amount_sent = rs.getInt("amount_sent");
+                    receiver_id = rs.getInt("receiver_id");
+                    receiver_nickname = rs.getString("receiver_nickname");
+                    time = rs.getString("time");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return new TransactionAudit(id, sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname, time);
     }
 
 }

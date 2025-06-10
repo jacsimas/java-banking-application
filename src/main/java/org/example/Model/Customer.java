@@ -6,8 +6,8 @@ public class Customer{
      private String user;
      private int moneyInCents;
      private String password;
-     private String realName;
-     private String email;
+     private  String realName;
+     private  String email;
 
     public Customer(int i, String ss, int i1, String password) {
         this.Id = i;

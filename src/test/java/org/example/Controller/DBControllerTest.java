@@ -2,6 +2,7 @@ package org.example.Controller;
 
 import org.example.DBController;
 import org.example.Model.Customer;
+import org.example.Model.TransactionAudit;
 import org.junit.Test;
 
 import static org.junit.Assert.fail;
@@ -66,5 +67,7 @@ public class DBControllerTest {
        assertThat(returnedId).isEqualTo(8);
 
     }
+
+
 
 }

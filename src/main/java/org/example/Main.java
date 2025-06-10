@@ -1,16 +1,14 @@
 package org.example;
 
 import org.example.Model.Customer;
+import org.example.Model.TransactionAudit;
 
 import java.sql.*;
 
 public class Main {
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) {
 
-
-
-        //drivermanager.addCustomerRecord(name, money, password);
 
     }
 }

@@ -1,5 +1,6 @@
-package org.example.Controller;
+package org.example.Services;
 
+import org.example.Controller.TransactionController;
 import org.example.DBController;
 import org.example.Model.Customer;
 
@@ -43,6 +44,7 @@ public class CustomerServices {
             int newreceiveramount = transactions.receiveMoneyTransaction(receiverMoney, amountToSend);
             dbcontroller.updateCustomerFunds(senderreturnedId, newsenderamount);
             dbcontroller.updateCustomerFunds(receiverreturnedId, newreceiveramount);
+            dbcontroller.createTransactionAudit(senderreturnedId,nameSenderCustomer, amountToSend, receiverreturnedId, nameReceiverCustomer);
             return true;
         }
         return false;

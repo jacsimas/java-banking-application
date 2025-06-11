@@ -194,11 +194,21 @@ public class DBController {
     public boolean checkIfHasFriend(int senderId, int receiverId) throws SQLException {
         String sql = "SELECT FROM friendships WHERE customer_id = ? AND friend_id = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
+
         ps.setLong(1, senderId);
         ps.setLong(2, receiverId);
 
         ResultSet rs = ps.executeQuery();
-        return rs.next();
+        boolean result = rs.next();
+
+        if (!result) {
+            ps.setLong(1, receiverId);
+            ps.setLong(2, senderId);
+
+            rs = ps.executeQuery();
+            return rs.next();
+        }
+        return true;
     }
 
     public void insertIntoTransfers(int senderId, int receiverId, int amount) throws SQLException {

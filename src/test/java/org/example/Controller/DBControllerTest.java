@@ -78,7 +78,7 @@ public class DBControllerTest {
 
  @Test
     public void checkIfHasFriendTest() throws SQLException {
-      boolean isfriend = dbcontroller.checkIfHasFriend(3, 2);
+      boolean isfriend = dbcontroller.checkIfHasFriend(7, 5);
         // fix this, now it is only one way check
         assertThat(isfriend).isTrue();
  }

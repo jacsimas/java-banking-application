@@ -45,6 +45,12 @@ public class CustomerServices {
             dbcontroller.updateCustomerFunds(senderreturnedId, newsenderamount);
             dbcontroller.updateCustomerFunds(receiverreturnedId, newreceiveramount);
             dbcontroller.createTransactionAudit(senderreturnedId,nameSenderCustomer, amountToSend, receiverreturnedId, nameReceiverCustomer);
+            boolean isfriends = dbcontroller.checkIfHasFriend(senderreturnedId, receiverreturnedId);
+            if (isfriends){
+            dbcontroller.insertIntoTransfers(senderreturnedId, receiverreturnedId, amountToSend);
+            dbcontroller.insertIntoTransferTotals1(senderreturnedId, receiverreturnedId, amountToSend);
+            dbcontroller.insertIntoTransferTotals2(senderreturnedId, receiverreturnedId, amountToSend);
+            }
             return true;
         }
         return false;

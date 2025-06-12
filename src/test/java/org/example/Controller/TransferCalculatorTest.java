@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TransactionControllerTest {
+public class TransferCalculatorTest {
     // I guess this class should implement the main logic
     // UserModel expectedUser = new UserModel(55, "bb", 100);
 

@@ -13,6 +13,7 @@ public class CustomerServices {
     DBController dbcontroller = new DBController();
     TransferCalculator transactions = new TransferCalculator();
 
+
     public CustomerServices() throws SQLException {
     }
 
@@ -28,17 +29,18 @@ public class CustomerServices {
         }
     }
 
-    public void makeTransfer(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException, IOException {
-        int senderreturnedId = dbcontroller.findCustomerByUsername(nameSenderCustomer);
-        int receiverreturnedId = dbcontroller.findCustomerByUsername(nameReceiverCustomer);
-
-        boolean sendmoney = sendMoneyToSomeone(senderreturnedId, amountToSend);
-        if (sendmoney){
-            receiveMoney(receiverreturnedId, amountToSend);
-            updateDbAfterTransfer(senderreturnedId, nameSenderCustomer, receiverreturnedId, nameReceiverCustomer, amountToSend);
-            System.out.println("Transfer is done");
-        }
-    }
+//    public boolean makeTransfer(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException, IOException {
+//        int senderreturnedId = dbcontroller.findCustomerByUsername(nameSenderCustomer);
+//        int receiverreturnedId = dbcontroller.findCustomerByUsername(nameReceiverCustomer);
+//
+//        boolean sendmoney = sendMoneyToSomeone(senderreturnedId, amountToSend);
+//        if (sendmoney){
+//            receiveMoney(receiverreturnedId, amountToSend);
+//            updateDbAfterTransfer(senderreturnedId, nameSenderCustomer, receiverreturnedId, nameReceiverCustomer, amountToSend);
+//            return true;
+//        }
+//        return false;
+//    }
 
  // what if funds insufficient? add error handlers
     public boolean sendMoneyToSomeone(int senderreturnedId, int amountToSend) throws IOException, SQLException {
@@ -76,6 +78,8 @@ public class CustomerServices {
             dbcontroller.insertIntoTransfers(senderreturnedId, receiverreturnedId, amountToSend);
         }
     }
+
+
 /*
     private void insufficientFundsMessage() {
         System.out.println("You don't have the amount selected to continue with this transaction!");

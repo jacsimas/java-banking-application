@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.Model.Customer;
 import org.example.Model.TransactionAudit;
+import org.example.Services.CustomerServiceThread;
 import org.example.Services.CustomerServices;
 import org.example.Services.ThreadTest;
 import org.example.Services.TransferHandler;
@@ -11,7 +12,7 @@ import java.sql.*;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException, InterruptedException {
 
 //        DBController dbcontrol = new DBController();
 //
@@ -21,10 +22,20 @@ public class Main {
 //        ThreadTest R2 = new ThreadTest( "Thread-2");
 //        R2.start();
 
-        CustomerServices cservices = new CustomerServices();
 
-        cservices.makeTransfer("derry", "jennifer", 2000);
+        CustomerServiceThread thread1 = new CustomerServiceThread("transfer 1", "johnny", "jack", 3000);
+        CustomerServiceThread thread2 = new CustomerServiceThread("transfer 2", "derry", "jennifer", 3000);
+
+        thread1.start();
+        thread2.start();
+
+
+//        may change to such type of structure later on:
+//        Thread t = new Thread(new Worker(new Calculator()));
+//        t.start();
+
     }
+
 }
 
 /*

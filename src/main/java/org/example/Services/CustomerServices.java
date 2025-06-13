@@ -29,18 +29,18 @@ public class CustomerServices {
         }
     }
 
-//    public boolean makeTransfer(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException, IOException {
-//        int senderreturnedId = dbcontroller.findCustomerByUsername(nameSenderCustomer);
-//        int receiverreturnedId = dbcontroller.findCustomerByUsername(nameReceiverCustomer);
-//
-//        boolean sendmoney = sendMoneyToSomeone(senderreturnedId, amountToSend);
-//        if (sendmoney){
-//            receiveMoney(receiverreturnedId, amountToSend);
-//            updateDbAfterTransfer(senderreturnedId, nameSenderCustomer, receiverreturnedId, nameReceiverCustomer, amountToSend);
-//            return true;
-//        }
-//        return false;
-//    }
+    public boolean makeTransfer(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException, IOException {
+        int senderreturnedId = dbcontroller.findCustomerByUsername(nameSenderCustomer);
+        int receiverreturnedId = dbcontroller.findCustomerByUsername(nameReceiverCustomer);
+
+        boolean sendmoney = sendMoneyToSomeone(senderreturnedId, amountToSend);
+        if (sendmoney){
+            receiveMoney(receiverreturnedId, amountToSend);
+            updateDbAfterTransfer(senderreturnedId, nameSenderCustomer, receiverreturnedId, nameReceiverCustomer, amountToSend);
+            return true;
+        }
+        return false;
+    }
 
  // what if funds insufficient? add error handlers
     public boolean sendMoneyToSomeone(int senderreturnedId, int amountToSend) throws IOException, SQLException {

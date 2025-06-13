@@ -12,13 +12,11 @@ public class CustomerServiceThread extends Thread{
     CustomerServices cservice = new CustomerServices();
     DBController dbController = new DBController();
 
-    private String threadname;
     String nameSenderCustomer;
     String nameReceiverCustomer;
     int amountToSend;
 
     public CustomerServiceThread(String threadname, String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException {
-        this.threadname = threadname;
         this.nameSenderCustomer = nameSenderCustomer;
         this.nameReceiverCustomer = nameReceiverCustomer;
         this.amountToSend = amountToSend;
@@ -40,7 +38,7 @@ public class CustomerServiceThread extends Thread{
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(threadname + " is running");
+        System.out.println( " is running");
         try {
             sleep(50);
         } catch (InterruptedException e) {
@@ -54,7 +52,6 @@ public class CustomerServiceThread extends Thread{
             }
             try {
                 cservice.updateDbAfterTransfer(senderreturnedId, nameSenderCustomer, receiverreturnedId, nameReceiverCustomer, amountToSend);
-                System.out.println(threadname + " is done");
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -64,7 +61,6 @@ public class CustomerServiceThread extends Thread{
         // could later just change to method handling from CustomerServices
 
     public void start(){
-        System.out.println("Starting " +  threadname );
-        super.start();
+        start();
     }
 }

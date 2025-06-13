@@ -9,6 +9,8 @@ import org.example.Services.TransferHandler;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
 
@@ -22,18 +24,40 @@ public class Main {
 //        ThreadTest R2 = new ThreadTest( "Thread-2");
 //        R2.start();
 
+        CustomerServices customerserviceobj1 = new CustomerServices();
+        CustomerServices customerserviceobj2 = new CustomerServices();
 
-        CustomerServiceThread thread1 = new CustomerServiceThread("transfer 1", "johnny", "jack", 3000);
-        CustomerServiceThread thread2 = new CustomerServiceThread("transfer 2", "derry", "jennifer", 3000);
+        ExecutorService pool = Executors.newFixedThreadPool(2);
 
-        thread1.start();
-        thread2.start();
+        pool.submit(() -> {
+            try {
+                customerserviceobj1.makeTransfer("johnny", "jack", 3000);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        pool.submit(() -> {
+            try {
+                customerserviceobj2.makeTransfer("derry", "jennifer", 3000);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        pool.shutdown();
 
 
 //        may change to such type of structure later on:
 //        Thread t = new Thread(new Worker(new Calculator()));
 //        t.start();
 
+
+        // f.e. put:     "johnny", "jack", 3000
+        //               "derry", "jennifer", 3000
     }
 
 }

@@ -1,6 +1,6 @@
 package org.example.Controller;
 
-public class TransactionController{
+public class TransferCalculator {
 
     public int receiveMoneyTransaction( int receiverCustomerAmount, int transferAmount){
         return receiverCustomerAmount + transferAmount;

@@ -2,6 +2,7 @@ package org.example.Controller;
 
 import org.example.DBController;
 import org.example.Model.Customer;
+import org.example.Model.TransactionAudit;
 import org.junit.Test;
 
 import static org.junit.Assert.fail;
@@ -66,5 +67,20 @@ public class DBControllerTest {
        assertThat(returnedId).isEqualTo(8);
 
     }
+
+ @Test
+    public void insertIntoFriendshipsTest() throws SQLException {
+     int senderId = 5;
+     int receiverId = 3;
+
+     dbcontroller.insertIntoFriendships(senderId, receiverId);
+ }
+
+ @Test
+    public void checkIfHasFriendTest() throws SQLException {
+      boolean isfriend = dbcontroller.checkIfHasFriend(7, 5);
+        // fix this, now it is only one way check
+        assertThat(isfriend).isTrue();
+ }
 
 }

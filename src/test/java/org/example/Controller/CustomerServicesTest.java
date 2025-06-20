@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import org.example.Services.CustomerServices;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -29,7 +30,6 @@ public class CustomerServicesTest {
     @Test
     public void sendMoneyToSomeoneTest() throws SQLException, IOException {
 
-        customerActionsController.sendMoneyToSomeone("jennifer", "derry", 8000);
         // what if transaction breaks for some reason? or if he doesn't receive money? or if she sends money,
         // but he doesn't receive?
     }

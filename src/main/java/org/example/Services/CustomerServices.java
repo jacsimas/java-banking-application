@@ -1,5 +1,6 @@
-package org.example.Controller;
+package org.example.Services;
 
+import org.example.Controller.TransferCalculator;
 import org.example.DBController;
 import org.example.Model.Customer;
 
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 public class CustomerServices {
 
     DBController dbcontroller = new DBController();
-    TransactionController transactions = new TransactionController();
+    TransferCalculator transactions = new TransferCalculator();
 
     public CustomerServices() throws SQLException {
     }
@@ -27,27 +28,54 @@ public class CustomerServices {
         }
     }
 
-
-    public boolean sendMoneyToSomeone(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws IOException, SQLException {
-
+    public void makeTransfer(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException, IOException {
         int senderreturnedId = dbcontroller.findCustomerByUsername(nameSenderCustomer);
-        Customer sendercustomer = dbcontroller.returnRecord(senderreturnedId);
         int receiverreturnedId = dbcontroller.findCustomerByUsername(nameReceiverCustomer);
-        Customer receivercustomer = dbcontroller.returnRecord(receiverreturnedId);
+
+        boolean sendmoney = sendMoneyToSomeone(senderreturnedId, amountToSend);
+        if (sendmoney){
+            receiveMoney(receiverreturnedId, amountToSend);
+            updateDbAfterTransfer(senderreturnedId, nameSenderCustomer, receiverreturnedId, nameReceiverCustomer, amountToSend);
+            System.out.println("Transfer is done");
+        }
+    }
+
+ // what if funds insufficient? add error handlers
+    public boolean sendMoneyToSomeone(int senderreturnedId, int amountToSend) throws IOException, SQLException {
+
+        Customer sendercustomer = dbcontroller.returnRecord(senderreturnedId);
 
         int senderMoney = sendercustomer.getMoneyInCents();
-        int receiverMoney = receivercustomer.getMoneyInCents();
         boolean hasenough = transactions.checkIfCustomerHasFundsToMakeTransaction(senderMoney, amountToSend);
         if (hasenough) {
             int newsenderamount = transactions.sendMoneyTransaction(senderMoney, amountToSend);
-            int newreceiveramount = transactions.receiveMoneyTransaction(receiverMoney, amountToSend);
             dbcontroller.updateCustomerFunds(senderreturnedId, newsenderamount);
-            dbcontroller.updateCustomerFunds(receiverreturnedId, newreceiveramount);
             return true;
         }
         return false;
+    }  // add isMoneyReceived method, splitting responsibilities and securing the transfers
+
+    public void receiveMoney(int receiverreturnedId, int amountToSend) throws SQLException {
+
+        Customer receivercustomer = dbcontroller.returnRecord(receiverreturnedId);
+        int receiverMoney = receivercustomer.getMoneyInCents();
+        int newreceiveramount = transactions.receiveMoneyTransaction(receiverMoney, amountToSend);
+
+        dbcontroller.updateCustomerFunds(receiverreturnedId, newreceiveramount);
+
     }
 
+    public void updateDbAfterTransfer(int senderreturnedId, String nameSenderCustomer, int receiverreturnedId, String nameReceiverCustomer, int amountToSend) throws SQLException {
+
+        dbcontroller.insertIntoTransferTotals1(senderreturnedId, receiverreturnedId, amountToSend);
+        dbcontroller.insertIntoTransferTotals2(senderreturnedId, receiverreturnedId, amountToSend);
+        dbcontroller.createTransactionAudit(senderreturnedId, nameSenderCustomer, amountToSend, receiverreturnedId, nameReceiverCustomer);
+
+        boolean isfriends = dbcontroller.checkIfHasFriend(senderreturnedId, receiverreturnedId);
+        if (isfriends){
+            dbcontroller.insertIntoTransfers(senderreturnedId, receiverreturnedId, amountToSend);
+        }
+    }
 /*
     private void insufficientFundsMessage() {
         System.out.println("You don't have the amount selected to continue with this transaction!");

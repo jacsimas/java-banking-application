@@ -1,17 +1,29 @@
 package org.example;
 
 import org.example.Model.Customer;
+import org.example.Model.TransactionAudit;
+import org.example.Services.CustomerServices;
+import org.example.Services.ThreadTest;
+import org.example.Services.TransferHandler;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class Main {
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
 
+//        DBController dbcontrol = new DBController();
+//
+//        ThreadTest R1 = new ThreadTest( "Thread-1");
+//        R1.start();
+//
+//        ThreadTest R2 = new ThreadTest( "Thread-2");
+//        R2.start();
 
+        CustomerServices cservices = new CustomerServices();
 
-        //drivermanager.addCustomerRecord(name, money, password);
-
+        cservices.makeTransfer("derry", "jennifer", 2000);
     }
 }
 

@@ -130,7 +130,7 @@ public class DBController {
     }
 
     public void createTransactionAudit(int senderId, String senderName, int moneyInCents, int getterId, String getterName) throws SQLException {
-        String sql = "INSERT INTO transactions_audit (sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname) " + "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO transactions_audit (sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname) VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement ps = connection.prepareStatement(sql,
                 Statement.RETURN_GENERATED_KEYS);

@@ -35,9 +35,10 @@ public class DBController {
 */
 
     public void addCustomerRecord(String name, int money, String password) throws SQLException {
-        String sql = "INSERT INTO customers (nickname, money, password) " + "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO customers (nickname, money, password) VALUES (?, ?, ?)";
 
-                       PreparedStatement ps = connection.prepareStatement(sql,
+                       PreparedStatement ps = connection.prepareStatement(
+                               sql,
                         Statement.RETURN_GENERATED_KEYS);{
 
             ps.setString(1, name);
@@ -132,21 +133,24 @@ public class DBController {
     public void createTransactionAudit(int senderId, String senderName, int moneyInCents, int getterId, String getterName) throws SQLException {
         String sql = "INSERT INTO transactions_audit (sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname) " + "VALUES (?, ?, ?, ?, ?)";
 
-        PreparedStatement ps = connection.prepareStatement(sql,
+        PreparedStatement ps = connection.prepareStatement(
+                sql,
                 Statement.RETURN_GENERATED_KEYS);
         {
-
             ps.setInt(1, senderId);
             ps.setString(2, senderName);
             ps.setInt(3, moneyInCents);
             ps.setInt(4, getterId);
             ps.setString(5, getterName);
 
-            int rows = ps.executeUpdate();                          // returns 1
-            System.out.println("Rows inserted: " + rows);
+            int rowsInserted = ps.executeUpdate();                          // returns 1
+            System.out.println("Rows inserted: " + rowsInserted);
         }
     }
 
+    /*
+
+     */
     public TransactionAudit returnTransactionAudit(int transactionid) throws SQLException {
 
         int id = transactionid;
@@ -158,7 +162,6 @@ public class DBController {
         String time = null;
 
         String sql = "SELECT id, sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname FROM transactions_audit WHERE id = ?";
-        // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
 
         try (
                 PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -220,7 +223,7 @@ public class DBController {
         addTx.executeUpdate();
     }
 
-    public void insertIntoTransferTotals1(int senderId, int receiverId, int amount) throws SQLException {
+    public void insertSenderReceiverIntoTransferTotals(int senderId, int receiverId, int amount) throws SQLException {
         PreparedStatement upsert1 = connection.prepareStatement(
                 """
                 INSERT INTO transfer_totals (customer_id, friend_id, sent_cents)
@@ -234,7 +237,7 @@ public class DBController {
             upsert1.executeUpdate();
     }
 
-    public void insertIntoTransferTotals2(int senderId, int receiverId, int amount) throws SQLException {
+    public void insertReceiverSenderIntoTransferTotals(int senderId, int receiverId, int amount) throws SQLException {
         PreparedStatement upsert2 = connection.prepareStatement(
                 """
                         INSERT INTO transfer_totals (customer_id, friend_id, received_cents)

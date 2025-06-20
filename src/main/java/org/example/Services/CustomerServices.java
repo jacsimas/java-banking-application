@@ -21,7 +21,7 @@ public class CustomerServices {
 
         int returnedId = dbcontroller.findCustomerByUsername(customerName);
         Customer customer = dbcontroller.returnRecord(returnedId);
-        int oldAmount = customer.getMoneyInCents();
+        int oldAmount = customer.moneyInCents();
         int newAmount = transactions.receiveMoneyTransaction(oldAmount, depositAmount);
         boolean fundsupdated = dbcontroller.updateCustomerFunds(returnedId, newAmount);
         if (fundsupdated){
@@ -42,12 +42,13 @@ public class CustomerServices {
         return false;
     }
 
- // what if funds insufficient? add error handlers
+ // TODO: what if funds insufficient? add error handlers
+
     public boolean sendMoneyToSomeone(int senderreturnedId, int amountToSend) throws IOException, SQLException {
 
         Customer sendercustomer = dbcontroller.returnRecord(senderreturnedId);
 
-        int senderMoney = sendercustomer.getMoneyInCents();
+        int senderMoney = sendercustomer.moneyInCents();
         boolean hasenough = transactions.checkIfCustomerHasFundsToMakeTransaction(senderMoney, amountToSend);
         if (hasenough) {
             int newsenderamount = transactions.sendMoneyTransaction(senderMoney, amountToSend);
@@ -55,12 +56,12 @@ public class CustomerServices {
             return true;
         }
         return false;
-    }  // add isMoneyReceived method, splitting responsibilities and securing the transfers
+    }
 
     public void receiveMoney(int receiverreturnedId, int amountToSend) throws SQLException {
 
         Customer receivercustomer = dbcontroller.returnRecord(receiverreturnedId);
-        int receiverMoney = receivercustomer.getMoneyInCents();
+        int receiverMoney = receivercustomer.moneyInCents();
         int newreceiveramount = transactions.receiveMoneyTransaction(receiverMoney, amountToSend);
 
         dbcontroller.updateCustomerFunds(receiverreturnedId, newreceiveramount);
@@ -69,8 +70,8 @@ public class CustomerServices {
 
     public void updateDbAfterTransfer(int senderreturnedId, String nameSenderCustomer, int receiverreturnedId, String nameReceiverCustomer, int amountToSend) throws SQLException {
 
-        dbcontroller.insertIntoTransferTotals1(senderreturnedId, receiverreturnedId, amountToSend);
-        dbcontroller.insertIntoTransferTotals2(senderreturnedId, receiverreturnedId, amountToSend);
+        dbcontroller.insertSenderReceiverIntoTransferTotals(senderreturnedId, receiverreturnedId, amountToSend);
+        dbcontroller.insertReceiverSenderIntoTransferTotals(senderreturnedId, receiverreturnedId, amountToSend);
         dbcontroller.createTransactionAudit(senderreturnedId, nameSenderCustomer, amountToSend, receiverreturnedId, nameReceiverCustomer);
 
         boolean isfriends = dbcontroller.checkIfHasFriend(senderreturnedId, receiverreturnedId);

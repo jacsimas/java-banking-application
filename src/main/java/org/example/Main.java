@@ -4,8 +4,6 @@ import org.example.Model.Customer;
 import org.example.Model.TransactionAudit;
 import org.example.Services.CustomerServiceThread;
 import org.example.Services.CustomerServices;
-import org.example.Services.ThreadTest;
-import org.example.Services.TransferHandler;
 
 import java.io.IOException;
 import java.sql.*;
@@ -16,6 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, IOException, InterruptedException {
 
+        // TODO:
 //        DBController dbcontrol = new DBController();
 //
 //        ThreadTest R1 = new ThreadTest( "Thread-1");

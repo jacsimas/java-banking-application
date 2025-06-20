@@ -16,13 +16,12 @@ public class CustomerServiceThread extends Thread{
     String nameReceiverCustomer;
     int amountToSend;
 
-    public CustomerServiceThread(String threadname, String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException {
+    public CustomerServiceThread(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException {
         this.nameSenderCustomer = nameSenderCustomer;
         this.nameReceiverCustomer = nameReceiverCustomer;
         this.amountToSend = amountToSend;
     }
 
-    // multiple threads access the same object in CustomerServices I think, should be guarded
     public void run() {
         int senderreturnedId = dbController.findCustomerByUsername(nameSenderCustomer);
         int receiverreturnedId = dbController.findCustomerByUsername(nameReceiverCustomer);
@@ -58,7 +57,7 @@ public class CustomerServiceThread extends Thread{
             }
         }
     }
-        // could later just change to method handling from CustomerServices
+        // TODO: could later just change to method handling from CustomerServices
 
     public void start(){
         start();

@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Currencies.CurrencyAPI;
 import org.example.Model.Customer;
 import org.example.Model.TransactionAudit;
 import org.example.Services.CustomerServiceThread;
@@ -7,6 +8,7 @@ import org.example.Services.CustomerServices;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -14,14 +16,12 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, IOException, InterruptedException {
 
-        // TODO:
-//        DBController dbcontrol = new DBController();
-//
-//        ThreadTest R1 = new ThreadTest( "Thread-1");
-//        R1.start();
-//
-//        ThreadTest R2 = new ThreadTest( "Thread-2");
-//        R2.start();
+        CurrencyAPI currencyapi = new CurrencyAPI();
+        HashMap<String, Double> currencies = currencyapi.currencyGetter();
+
+        for (Object i : currencies.keySet()) {
+            System.out.println(i + " : " + currencies.get(i));
+        }
 
         CustomerServices customerserviceobj1 = new CustomerServices();
         CustomerServices customerserviceobj2 = new CustomerServices();
@@ -30,7 +30,7 @@ public class Main {
 
         pool.submit(() -> {
             try {
-                customerserviceobj1.makeTransfer("johnny", "jack", 3000);
+                customerserviceobj1.makeTransfer("johnny", "jack", 10);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
@@ -39,7 +39,7 @@ public class Main {
         });
         pool.submit(() -> {
             try {
-                customerserviceobj2.makeTransfer("derry", "jennifer", 3000);
+                customerserviceobj2.makeTransfer("derry", "jennifer", 10);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {

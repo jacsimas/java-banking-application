@@ -1,11 +1,13 @@
 package org.example.Services;
 
 import org.example.Controller.TransferCalculator;
+import org.example.Currencies.CurrencyAPI;
 import org.example.DBController;
 import org.example.Model.Customer;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 
 public class CustomerServices {
@@ -80,7 +82,27 @@ public class CustomerServices {
         }
     }
 
+    public void convertMyFundsToAllCurrencies(String nameCustomer) throws IOException, SQLException {
+        // take customer's funds from DB; by name, find id, then take funds from customer object
+        // take currencies HashMap
+        // initiate a new hashmap, iterate through currencies map and multiply money value with each
+        // save new values in the new hashmap, return it and display it
 
+        CurrencyAPI currencyapi = new CurrencyAPI();
+        HashMap<String, Double> currencies = currencyapi.currencyGetter();
+        int customerId = dbcontroller.findCustomerByUsername(nameCustomer);
+        Customer returnedCustomerObj = dbcontroller.returnRecord(customerId);
+        int customerFunds = returnedCustomerObj.moneyInCents();
+        System.out.println(customerFunds + "\n");
+        for (Object i : currencies.keySet()) {
+            double value = currencies.get(i);
+            System.out.println(i + " rate: " + value + " " + value * customerFunds);
+        }
+    }
+
+    public void exchangeToOtherCurrency(){
+        //TODO: create a new column in database if needed and do an exchange operation for selected amount.
+    }
 /*
     private void insufficientFundsMessage() {
         System.out.println("You don't have the amount selected to continue with this transaction!");

@@ -40,7 +40,7 @@ public class DBControllerTest {
 //        int getmoney = customer.getMoneyInCents();
 
         Customer returnedCustomer = dbcontroller.returnRecord(customerId);
-        String nickname = returnedCustomer.getUser();
+        String nickname = returnedCustomer.user();
 
         assertThat(nickname).isEqualTo("johnny");
 

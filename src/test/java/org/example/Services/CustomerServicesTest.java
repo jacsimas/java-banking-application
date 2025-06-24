@@ -1,6 +1,5 @@
-package org.example.Controller;
+package org.example.Services;
 
-import org.example.Services.CustomerServices;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -34,5 +33,12 @@ public class CustomerServicesTest {
         // but he doesn't receive?
     }
 
+    @Test
+    public void convertMyFundsToAllCurrenciesTest() throws SQLException, IOException {
+// TODO: finish this test or delete
+        CustomerServices cservice = new CustomerServices();
+        cservice.convertMyFundsToAllCurrencies("jennifer");
+
+    }
 
 }

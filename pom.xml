@@ -49,6 +49,11 @@
             <version>42.7.4</version>   <!-- released 28 May 2025; supports PostgreSQL 16 -->
             <!-- scope can stay omitted (compile) or be set to runtime -->
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

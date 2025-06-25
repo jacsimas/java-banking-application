@@ -89,7 +89,7 @@ public class CustomerServices {
         // save new values in the new hashmap, return it and display it
 
         CurrencyAPI currencyapi = new CurrencyAPI();
-        HashMap<String, Double> currencies = currencyapi.currencyGetter();
+        HashMap<String, Double> currencies = currencyapi.getCurrencies();
         int customerId = dbcontroller.findCustomerByUsername(nameCustomer);
         Customer returnedCustomerObj = dbcontroller.returnRecord(customerId);
         int customerFunds = returnedCustomerObj.moneyInCents();

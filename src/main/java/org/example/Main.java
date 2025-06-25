@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws SQLException, IOException, InterruptedException {
 
         CurrencyAPI currencyapi = new CurrencyAPI();
-        HashMap<String, Double> currencies = currencyapi.currencyGetter();
+        HashMap<String, Double> currencies = currencyapi.getCurrencies();
 
         for (Object i : currencies.keySet()) {
             System.out.println(i + " : " + currencies.get(i));

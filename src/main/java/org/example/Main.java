@@ -3,7 +3,6 @@ package org.example;
 import org.example.Currencies.CurrencyAPI;
 import org.example.Model.Customer;
 import org.example.Model.TransactionAudit;
-import org.example.Services.CustomerServiceThread;
 import org.example.Services.CustomerServices;
 
 import java.io.IOException;

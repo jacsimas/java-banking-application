@@ -14,9 +14,10 @@ import java.util.HashMap;
 
 public class CurrencyAPI {
 
+    private static final String url_str = "https://v6.exchangerate-api.com/v6/79f34354ceb4dc1276fecca5/latest/USD";
+
 
     public HashMap getCurrencies() throws IOException {
-        final String url_str = "https://v6.exchangerate-api.com/v6/79f34354ceb4dc1276fecca5/latest/USD";
 
 
         URL url = new URL(url_str);

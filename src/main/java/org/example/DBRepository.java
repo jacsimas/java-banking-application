@@ -1,18 +1,21 @@
 package org.example;
 import org.example.Model.Customer;
 import org.example.Model.TransactionAudit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
-import java.sql.DriverManager;
 
-public class DBController {
+public class DBRepository {
 
 
     DriverManagerDB drivermanagerdb = new DriverManagerDB();
 
     Connection connection = drivermanagerdb.connect();
 
-    public DBController() throws SQLException {
+    final Logger logger = LoggerFactory.getLogger(DBRepository.class);
+
+    public DBRepository() throws SQLException {
     }
 
 /*
@@ -46,13 +49,17 @@ public class DBController {
             ps.setString(3, password);
 
             int rows = ps.executeUpdate();                          // returns 1
-            System.out.println("Rows inserted: " + rows);
-
+           // System.out.println("Rows inserted: " + rows);
+            logger.trace("Number of rows inserted: {}", rows);
+            if (rows == 0){
+                logger.error("Error");
+            }
             // --- fetch the auto-generated primary key -------------
             try (ResultSet keys = ps.getGeneratedKeys()) {
                 if (keys.next()) {
                     long id = keys.getLong(1);                      // ← your SERIAL / IDENTITY value
-                    System.out.println("New customer id = " + id);
+                   // System.out.println("New customer id = " + id);
+                    logger.info("New customer id = {}", id);
                 }
             }
     }
@@ -65,7 +72,6 @@ public class DBController {
         int money = 0;
         String cusPassword = null;
         String sql = "SELECT id, nickname, money, password FROM customers WHERE id = ?";
-        // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
 
         try (
                 PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -86,11 +92,10 @@ public class DBController {
         return new Customer(id, name, money, cusPassword);
     }
 
-
+// TODO: don't loop try catch in try catch
     public int findCustomerByUsername(String name){
         int id = 0;
         String sql = "SELECT id FROM customers WHERE nickname = ?";
-        // + customerId + " (id, nickname, money, password) " + "VALUES (?, ?, ?)";
         try (
                 PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, name);
@@ -103,13 +108,12 @@ public class DBController {
                 }
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
+            logger.error("error: {}", e);
         }
         return id;
     }
-//  else {
-//        System.out.println("No row found for nickname = " + name);
-//    }
+
 
     public boolean updateCustomerFunds(int customerId, int newAmount) {  //void
 
@@ -125,13 +129,13 @@ public class DBController {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public void createTransactionAudit(int senderId, String senderName, int moneyInCents, int getterId, String getterName) throws SQLException {
-        String sql = "INSERT INTO transactions_audit (sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname) " + "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO transactions_audit (sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname) VALUES (?, ?, ?, ?, ?)";
 
         PreparedStatement ps = connection.prepareStatement(
                 sql,
@@ -144,7 +148,7 @@ public class DBController {
             ps.setString(5, getterName);
 
             int rowsInserted = ps.executeUpdate();                          // returns 1
-            System.out.println("Rows inserted: " + rowsInserted);
+            logger.info("Number of rows inserted: {}", rowsInserted);
         }
     }
 
@@ -180,7 +184,9 @@ public class DBController {
                 }
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
+            logger.info("{} ", e);
+
         }
         return new TransactionAudit(id, sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname, time);
     }
@@ -271,3 +277,4 @@ public class DBController {
 }
 
 
+// TODO: split this class to atleast two different repositories

@@ -1,8 +1,7 @@
 package org.example.Controller;
 
-import org.example.DBController;
+import org.example.DBRepository;
 import org.example.Model.Customer;
-import org.example.Model.TransactionAudit;
 import org.junit.Test;
 
 import static org.junit.Assert.fail;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 
 public class DBControllerTest {
 
-    DBController dbcontroller = new DBController();
+    DBRepository dbcontroller = new DBRepository();
 
     public DBControllerTest() throws SQLException {
     }

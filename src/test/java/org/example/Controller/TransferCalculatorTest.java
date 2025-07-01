@@ -1,9 +1,7 @@
 package org.example.Controller;
 
-import org.example.DBController;
-import org.example.Model.Customer;
+import org.example.DBRepository;
 import org.example.Model.TransactionAudit;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -19,7 +17,7 @@ public class TransferCalculatorTest {
 
     @Test
             public void returnAuditRecordTest() throws SQLException {
-    DBController dbcontroller = new DBController();
+    DBRepository dbcontroller = new DBRepository();
 
     TransactionAudit returnedAudit =  dbcontroller.returnTransactionAudit(1);
 

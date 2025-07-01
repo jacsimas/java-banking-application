@@ -4,6 +4,8 @@ import org.example.Currencies.CurrencyAPI;
 import org.example.Model.Customer;
 import org.example.Model.TransactionAudit;
 import org.example.Services.CustomerServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.*;
@@ -14,6 +16,8 @@ import java.util.concurrent.Executors;
 public class Main {
 
     public static void main(String[] args) throws SQLException, IOException, InterruptedException {
+
+        final Logger log = LoggerFactory.getLogger(Main.class);
 
         CurrencyAPI currencyapi = new CurrencyAPI();
         HashMap<String, Double> currencies = currencyapi.getCurrencies();
@@ -29,19 +33,17 @@ public class Main {
 
         pool.submit(() -> {
             try {
-                customerserviceobj1.makeTransfer("johnny", "jack", 10);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
+               customerserviceobj1.makeTransfer("derry", "jack", 10);
+            } catch (SQLException | IOException e) {
+                log.error("Operation wasn't successful: {}", e.getMessage(), e);
                 throw new RuntimeException(e);
             }
         });
         pool.submit(() -> {
             try {
-                customerserviceobj2.makeTransfer("derry", "jennifer", 10);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
+                customerserviceobj2.makeTransfer("jack", "jennifer", 10);
+            } catch (SQLException | IOException e) {
+                log.error("Operation wasn't successful: {}", e.getMessage(), e);
                 throw new RuntimeException(e);
             }
         });

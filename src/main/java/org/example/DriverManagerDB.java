@@ -6,9 +6,9 @@ import java.sql.*;
 
 public class DriverManagerDB {
 
-    private final String url = "jdbc:postgresql://localhost:5432/findb";      // put into properties file
-    private final String username = "simon";
-    private final String password = "password";
+    private final String url = System.getenv("DBurl");      // put into properties file
+    private final String username = System.getenv("DBuser");
+    private final String password = System.getenv("DBpassword");
 
     public DriverManagerDB() throws SQLException {
     }

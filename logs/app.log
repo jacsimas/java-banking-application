@@ -39,3 +39,9 @@
 2025-07-03 13:14:43.203 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money was received
 2025-07-03 13:14:43.222 INFO  [pool-1-thread-2] org.example.DBRepository - Number of rows inserted: 1
 2025-07-03 13:14:43.222 INFO  [pool-1-thread-1] org.example.DBRepository - Number of rows inserted: 1
+2025-07-03 19:51:36.791 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money was sent
+2025-07-03 19:51:36.791 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money was sent
+2025-07-03 19:51:36.796 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money was received
+2025-07-03 19:51:36.796 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money was received
+2025-07-03 19:51:36.836 INFO  [pool-1-thread-2] org.example.DBRepository - Number of rows inserted: 1
+2025-07-03 19:51:36.836 INFO  [pool-1-thread-1] org.example.DBRepository - Number of rows inserted: 1

@@ -10,11 +10,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.sql.SQLException;
 
-public class DBControllerTest {
+public class DBRepositoryTest {
 
     DBRepository dbcontroller = new DBRepository();
 
-    public DBControllerTest() throws SQLException {
+    public DBRepositoryTest() throws SQLException {
     }
 
     @Test

@@ -49,16 +49,13 @@ public class DBRepository {
             ps.setString(3, password);
 
             int rows = ps.executeUpdate();                          // returns 1
-           // System.out.println("Rows inserted: " + rows);
             logger.trace("Number of rows inserted: {}", rows);
             if (rows == 0){
                 logger.error("Error");
             }
-            // --- fetch the auto-generated primary key -------------
             try (ResultSet keys = ps.getGeneratedKeys()) {
                 if (keys.next()) {
                     long id = keys.getLong(1);                      // ← your SERIAL / IDENTITY value
-                   // System.out.println("New customer id = " + id);
                     logger.info("New customer id = {}", id);
                 }
             }
@@ -77,7 +74,7 @@ public class DBRepository {
                 PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
 
-            try (ResultSet rs = ps.executeQuery()) {
+            ResultSet rs = ps.executeQuery();
 
                 while (rs.next()) {
                     id = rs.getInt("id");           // error here probably
@@ -85,7 +82,7 @@ public class DBRepository {
                     money = rs.getInt("money");
                     cusPassword = rs.getString("password");
                 }
-            }
+        //TODO: make this code with error logging
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -100,15 +97,14 @@ public class DBRepository {
                 PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, name);
 
-            try (ResultSet rs = ps.executeQuery()) {
+            ResultSet rs = ps.executeQuery();
 
                 while (rs.next()) {
                     id = rs.getInt("id");
                     return id;
                 }
-            }
+//TODO: same problem, try without catch was looped in try catch
         } catch (SQLException e) {
-            //System.out.println(e.getMessage());
             logger.error("error: {}", e);
         }
         return id;
@@ -118,14 +114,13 @@ public class DBRepository {
     public boolean updateCustomerFunds(int customerId, int newAmount) {  //void
 
         String sql = "UPDATE customers SET money = ? WHERE id = ? ";
-        int updated = 0;
         try ( //
                 PreparedStatement ps = connection.prepareStatement(sql)) {
 
             ps.setInt(1, newAmount);
             ps.setInt(2,customerId);
 
-            updated = ps.executeUpdate();
+           ps.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -171,7 +166,7 @@ public class DBRepository {
                 PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setLong(1, id);
 
-            try (ResultSet rs = ps.executeQuery()) {
+           ResultSet rs = ps.executeQuery();
 
                 while (rs.next()) {
                     id = rs.getInt("id");
@@ -182,9 +177,8 @@ public class DBRepository {
                     receiver_nickname = rs.getString("receiver_nickname");
                     time = rs.getString("time");
                 }
-            }
+            //TODO: same problem, try without catch was looped in try catch
         } catch (SQLException e) {
-            //System.out.println(e.getMessage());
             logger.info("{} ", e);
 
         }

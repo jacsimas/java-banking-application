@@ -2,5 +2,5 @@
 /shelf/
 /workspace.xml
 /target/
-resources/
+logback.xml
 logs/

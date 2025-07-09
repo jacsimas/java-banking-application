@@ -3,9 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <groupId>org.example</groupId>
-    <artifactId>AppForTests</artifactId>
+    <artifactId>AppwithPostgreSQL</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -14,6 +19,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -64,6 +78,11 @@
             <artifactId>logback-classic</artifactId>
             <version>1.5.18</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>3.4.4</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -78,6 +97,33 @@
                         <include>**/*Tests.java</include>
                     </includes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>11.10.0</version>
+                <configuration>
+                    <serverId>flyway-db</serverId>
+                    <url>jdbc:postgresql://172.31.224.1:5432/findb</url>
+                    <!-- where V1__*.sql live -->
+                    <locations>
+                        <location>filesystem:src/main/resources/db/migration</location>
+                    </locations>
+                </configuration>
+                <dependencies>
+                <!-- 1️⃣  PostgreSQL database module -->
+                <dependency>
+                    <groupId>org.flywaydb</groupId>
+                    <artifactId>flyway-database-postgresql</artifactId>
+                    <version>11.10.0</version>
+                </dependency>
+                <!-- 2️⃣  JDBC driver (Flyway won’t ship it for licensing reasons) -->
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>42.7.4</version>
+                </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

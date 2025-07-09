@@ -1,6 +1,6 @@
 package org.example.Controller;
 
-import org.example.DBRepository;
+import org.example.Repositories.TransfersRepository;
 import org.example.Model.TransactionAudit;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class TransferCalculatorTest {
 
     @Test
             public void returnAuditRecordTest() throws SQLException {
-    DBRepository dbcontroller = new DBRepository();
+    TransfersRepository dbcontroller = new TransfersRepository();
 
     TransactionAudit returnedAudit =  dbcontroller.returnTransactionAudit(1);
 

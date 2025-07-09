@@ -2,7 +2,8 @@ package org.example.Services;
 
 import org.example.Controller.TransferCalculator;
 import org.example.Currencies.CurrencyAPI;
-import org.example.DBRepository;
+import org.example.Repositories.CustomerEntityRepository;
+import org.example.Repositories.TransfersRepository;
 import org.example.Model.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +15,8 @@ import java.util.HashMap;
 
 public class CustomerServices {
 
-    DBRepository dbrepository = new DBRepository();
-
+    TransfersRepository dbrepository = new TransfersRepository();
+    CustomerEntityRepository customerentityrepository = new CustomerEntityRepository();
     TransferCalculator transactions = new TransferCalculator();
     final Logger logger = LoggerFactory.getLogger(CustomerServices.class);
 
@@ -24,11 +25,11 @@ public class CustomerServices {
 
     public void depositMoney(String customerName, int depositAmount) throws SQLException {
 
-        int returnedId = dbrepository.findCustomerByUsername(customerName);
-        Customer customer = dbrepository.returnRecord(returnedId);
+        int returnedId = customerentityrepository.findCustomerByUsername(customerName);
+        Customer customer = customerentityrepository.returnRecord(returnedId);
         int oldAmount = customer.moneyInCents();
         int newAmount = transactions.receiveMoneyTransaction(oldAmount, depositAmount);
-        boolean fundsupdated = dbrepository.updateCustomerFunds(returnedId, newAmount);
+        boolean fundsupdated = customerentityrepository.updateCustomerFunds(returnedId, newAmount);
         if (fundsupdated){
             System.out.println(customerName + " money was updated!");
             logger.info("{} money was updated by {}! ", customerName, depositAmount);
@@ -36,8 +37,8 @@ public class CustomerServices {
     }
 
     public void makeTransfer(String nameSenderCustomer, String nameReceiverCustomer, int amountToSend) throws SQLException, IOException {
-        int senderreturnedId = dbrepository.findCustomerByUsername(nameSenderCustomer);
-        int receiverreturnedId = dbrepository.findCustomerByUsername(nameReceiverCustomer);
+        int senderreturnedId = customerentityrepository.findCustomerByUsername(nameSenderCustomer);
+        int receiverreturnedId = customerentityrepository.findCustomerByUsername(nameReceiverCustomer);
 
         boolean isMoneyReceived = false;
 
@@ -58,13 +59,13 @@ public class CustomerServices {
 
     public boolean sendMoneyToSomeone(int senderreturnedId, int amountToSend) throws SQLException {
 
-        Customer sendercustomer = dbrepository.returnRecord(senderreturnedId);
+        Customer sendercustomer = customerentityrepository.returnRecord(senderreturnedId);
 
         int senderMoney = sendercustomer.moneyInCents();
         boolean hasenough = transactions.checkIfCustomerHasFundsToMakeTransaction(senderMoney, amountToSend);
         if (hasenough) {
             int newsenderamount = transactions.sendMoneyTransaction(senderMoney, amountToSend);
-            dbrepository.updateCustomerFunds(senderreturnedId, newsenderamount);
+            customerentityrepository.updateCustomerFunds(senderreturnedId, newsenderamount);
             return true;
         }
         else
@@ -74,10 +75,10 @@ public class CustomerServices {
 
     public boolean receiveMoney(int receiverreturnedId, int amountToSend) throws SQLException {
 
-        Customer receivercustomer = dbrepository.returnRecord(receiverreturnedId);
+        Customer receivercustomer = customerentityrepository.returnRecord(receiverreturnedId);
         int receiverMoney = receivercustomer.moneyInCents();
         int newreceiveramount = transactions.receiveMoneyTransaction(receiverMoney, amountToSend);
-        boolean receiverFundsUpdated = dbrepository.updateCustomerFunds(receiverreturnedId, newreceiveramount);
+        boolean receiverFundsUpdated = customerentityrepository.updateCustomerFunds(receiverreturnedId, newreceiveramount);
         if (receiverFundsUpdated) {
             return true;
         } else return false;
@@ -89,7 +90,7 @@ public class CustomerServices {
         dbrepository.insertReceiverSenderIntoTransferTotals(senderreturnedId, receiverreturnedId, amountToSend);
         dbrepository.createTransactionAudit(senderreturnedId, nameSenderCustomer, amountToSend, receiverreturnedId, nameReceiverCustomer);
 
-        boolean isfriends = dbrepository.checkIfHasFriend(senderreturnedId, receiverreturnedId);
+        boolean isfriends = customerentityrepository.checkIfHasFriend(senderreturnedId, receiverreturnedId);
         if (isfriends){
             dbrepository.insertIntoTransfers(senderreturnedId, receiverreturnedId, amountToSend);
         }
@@ -99,8 +100,8 @@ public class CustomerServices {
 
         CurrencyAPI currencyapi = new CurrencyAPI();
         HashMap<String, Double> currencies = currencyapi.getCurrencies();
-        int customerId = dbrepository.findCustomerByUsername(nameCustomer);
-        Customer returnedCustomerObj = dbrepository.returnRecord(customerId);
+        int customerId = customerentityrepository.findCustomerByUsername(nameCustomer);
+        Customer returnedCustomerObj = customerentityrepository.returnRecord(customerId);
         int customerFunds = returnedCustomerObj.moneyInCents();
         System.out.println(customerFunds + "\n");
         for (Object i : currencies.keySet()) {

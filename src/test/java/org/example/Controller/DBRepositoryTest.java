@@ -1,6 +1,7 @@
 package org.example.Controller;
 
-import org.example.DBRepository;
+import org.example.Repositories.CustomerEntityRepository;
+import org.example.Repositories.TransfersRepository;
 import org.example.Model.Customer;
 import org.junit.Test;
 
@@ -12,8 +13,8 @@ import java.sql.SQLException;
 
 public class DBRepositoryTest {
 
-    DBRepository dbcontroller = new DBRepository();
-
+    CustomerEntityRepository customerentityrepository = new CustomerEntityRepository();
+    TransfersRepository dbrepository = new TransfersRepository();
     public DBRepositoryTest() throws SQLException {
     }
 
@@ -23,7 +24,7 @@ public class DBRepositoryTest {
         String name = "jennifer";
         int money = 18500;
         String password  = "pass4";
-       dbcontroller.addCustomerRecord(name,money, password);
+       customerentityrepository.addCustomerRecord(name,money, password);
 
 
        // assertThat(recordadded).isTrue();
@@ -38,7 +39,7 @@ public class DBRepositoryTest {
 //        String getpassword = customer.getPassword();
 //        int getmoney = customer.getMoneyInCents();
 
-        Customer returnedCustomer = dbcontroller.returnRecord(customerId);
+        Customer returnedCustomer = customerentityrepository.returnRecord(customerId);
         String nickname = returnedCustomer.user();
 
         assertThat(nickname).isEqualTo("johnny");
@@ -51,7 +52,7 @@ public class DBRepositoryTest {
         int customerId = 2;
         int newAmount = 27000;
 
-        dbcontroller.updateCustomerFunds(customerId, newAmount);
+        customerentityrepository.updateCustomerFunds(customerId, newAmount);
 
 
     }
@@ -61,7 +62,7 @@ public class DBRepositoryTest {
 
         String name = "jennifer";
 
-       int returnedId =  dbcontroller.findCustomerByUsername(name);
+       int returnedId =  customerentityrepository.findCustomerByUsername(name);
 
        assertThat(returnedId).isEqualTo(8);
 
@@ -72,12 +73,12 @@ public class DBRepositoryTest {
      int senderId = 5;
      int receiverId = 3;
 
-     dbcontroller.insertIntoFriendships(senderId, receiverId);
+     dbrepository.insertIntoFriendships(senderId, receiverId);
  }
 
  @Test
     public void checkIfHasFriendTest() throws SQLException {
-      boolean isfriend = dbcontroller.checkIfHasFriend(7, 5);
+      boolean isfriend = customerentityrepository.checkIfHasFriend(7, 5);
         // fix this, now it is only one way check
         assertThat(isfriend).isTrue();
  }

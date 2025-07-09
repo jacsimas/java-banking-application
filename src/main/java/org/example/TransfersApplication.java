@@ -1,23 +1,30 @@
 package org.example;
 
 import org.example.Currencies.CurrencyAPI;
-import org.example.Model.Customer;
-import org.example.Model.TransactionAudit;
+import org.example.Repositories.TransfersRepository;
 import org.example.Services.CustomerServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Main {
+@SpringBootApplication
+public class TransfersApplication {
 
-    public static void main(String[] args) throws SQLException, IOException, InterruptedException {
+    public static void main(String[] args) throws SQLException, IOException {
+        SpringApplication.run(TransfersApplication.class, args);
 
-        final Logger log = LoggerFactory.getLogger(Main.class);
+        TransfersRepository trep = new TransfersRepository();
+
+        System.out.println("data: " + trep.returnTransactionAudit(15));
+
+        final Logger log = LoggerFactory.getLogger(TransfersApplication.class);
 
         CurrencyAPI currencyapi = new CurrencyAPI();
         HashMap<String, Double> currencies = currencyapi.getCurrencies();
@@ -33,7 +40,7 @@ public class Main {
 
         pool.submit(() -> {
             try {
-               customerserviceobj1.makeTransfer("derry", "jack", 10);
+                customerserviceobj1.makeTransfer("derry", "jack", 10);
             } catch (SQLException | IOException e) {
                 log.error("Operation wasn't successful: {}", e.getMessage(), e);
                 throw new RuntimeException(e);
@@ -49,7 +56,11 @@ public class Main {
         });
 
         pool.shutdown();
+    }
+}
+/*
 
+*/
 
 //        may change to such type of structure later on:
 //        Thread t = new Thread(new Worker(new Calculator()));
@@ -58,37 +69,5 @@ public class Main {
 
         // f.e. put:     "johnny", "jack", 3000
         //               "derry", "jennifer", 3000
-    }
 
-}
 
-/*
-
-        Connection c = null;
-        try {
-            Class.forName("org.postgresql.Driver");
-            c = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/findb",
-                            "simon", "password");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println(e.getClass().getName()+": "+e.getMessage());
-            System.exit(0);
-        }
-        System.out.println("Opened database successfully");
---
-  ResultSet resultSet = statement.executeQuery("SELECT * FROM customers");
-
-        while (resultSet.next())
-        {
-            String columnValue = resultSet.getString("nickname");
-            System.out.println("Column Value: " + columnValue);
-        }
-
-        // Perform desired database operations
-
-        // Close the connection
-        resultSet.close();
-        statement.close();
-        connection.close();
- */

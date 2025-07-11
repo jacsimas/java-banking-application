@@ -437,3 +437,26 @@
 2025-07-11 14:44:54.644 INFO  [pool-2-thread-2] o.e.Repositories.TransfersRepository - Number of rows inserted: 1
 2025-07-11 14:45:00.563 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
 2025-07-11 14:45:00.571 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 18:10:21.362 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 12392 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 18:10:21.362 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 18:10:23.033 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 18:10:23.048 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 18:10:23.052 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 18:10:23.052 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 18:10:23.106 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 18:10:23.106 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1621 ms
+2025-07-11 18:10:23.722 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 18:10:23.751 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 18:10:23.763 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 3.038 seconds (process running for 4.131)
+2025-07-11 18:10:24.230 INFO  [main] o.example.Services.CustomerServices - derry money was updated by 200! 
+2025-07-11 18:10:25.094 INFO  [main] o.example.Services.CustomerServices - money was sent
+2025-07-11 18:10:25.094 INFO  [main] o.example.Services.CustomerServices - money was received
+2025-07-11 18:10:25.102 INFO  [main] o.e.Repositories.TransfersRepository - Number of rows inserted: 1
+2025-07-11 18:10:25.110 INFO  [pool-2-thread-1] o.example.Services.CustomerServices - money was sent
+2025-07-11 18:10:25.113 INFO  [pool-2-thread-1] o.example.Services.CustomerServices - money was received
+2025-07-11 18:10:25.110 INFO  [pool-2-thread-2] o.example.Services.CustomerServices - money was sent
+2025-07-11 18:10:25.113 INFO  [pool-2-thread-2] o.example.Services.CustomerServices - money was received
+2025-07-11 18:10:25.117 INFO  [pool-2-thread-1] o.e.Repositories.TransfersRepository - Number of rows inserted: 1
+2025-07-11 18:10:25.117 INFO  [pool-2-thread-2] o.e.Repositories.TransfersRepository - Number of rows inserted: 1
+2025-07-11 18:10:27.722 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 18:10:27.722 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete

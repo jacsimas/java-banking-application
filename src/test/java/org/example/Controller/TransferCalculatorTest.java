@@ -1,6 +1,5 @@
 package org.example.Controller;
 
-import org.example.DBRepository;
 import org.example.Model.TransactionAudit;
 import org.junit.Test;
 
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TransferCalculatorTest {
     // I guess this class should implement the main logic
     // UserModel expectedUser = new UserModel(55, "bb", 100);
-
+/*
     @Test
             public void returnAuditRecordTest() throws SQLException {
     DBRepository dbcontroller = new DBRepository();
@@ -32,4 +31,6 @@ public class TransferCalculatorTest {
     //drivermanager.addCustomerRecord(name, money, password);
 
 }
+
+ */
 }

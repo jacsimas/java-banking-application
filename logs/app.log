@@ -1,29 +1,439 @@
-2025-07-01 12:41:45.151 INFO  [pool-1-thread-1] org.example.DBRepository - Number of rows inserted: 1
-2025-07-01 12:41:45.151 INFO  [pool-1-thread-2] org.example.DBRepository - Number of rows inserted: 1
-2025-07-01 12:41:45.174 INFO  [pool-1-thread-1] org.example.Main - User johnny logged in
-2025-07-01 14:58:19.696 ERROR [pool-1-thread-1] o.example.Services.CustomerServices - the money weren't received, it returned false
-2025-07-01 14:58:19.698 INFO  [pool-1-thread-1] org.example.Main - User johnny sent the money
-2025-07-01 14:58:19.733 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money were sent
-2025-07-01 14:58:19.733 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money were received
-2025-07-01 14:58:19.762 INFO  [pool-1-thread-2] org.example.DBRepository - Number of rows inserted: 1
-2025-07-01 14:58:19.775 INFO  [pool-1-thread-2] org.example.Main - User johnny sent the money
-2025-07-01 15:02:53.411 ERROR [pool-1-thread-1] o.example.Services.CustomerServices - the money weren't received, it returned false
-2025-07-01 15:02:53.449 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money were sent
-2025-07-01 15:02:53.451 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money were received
-2025-07-01 15:02:53.467 INFO  [pool-1-thread-2] org.example.DBRepository - Number of rows inserted: 1
-2025-07-01 15:04:32.451 ERROR [pool-1-thread-2] o.example.Services.CustomerServices - the money weren't received, it returned false
-2025-07-01 15:04:32.475 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money were sent
-2025-07-01 15:04:32.477 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money were received
-2025-07-01 15:04:32.507 INFO  [pool-1-thread-1] org.example.DBRepository - Number of rows inserted: 1
-2025-07-01 15:26:37.111 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money were sent
-2025-07-01 15:26:37.110 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money were sent
-2025-07-01 15:26:37.115 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money were received
-2025-07-01 15:26:37.115 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money were received
-2025-07-01 15:26:37.144 INFO  [pool-1-thread-2] org.example.DBRepository - Number of rows inserted: 1
-2025-07-01 15:26:37.144 INFO  [pool-1-thread-1] org.example.DBRepository - Number of rows inserted: 1
-2025-07-01 15:29:53.132 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money was sent
-2025-07-01 15:29:53.132 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money was sent
-2025-07-01 15:29:53.137 INFO  [pool-1-thread-1] o.example.Services.CustomerServices - money was received
-2025-07-01 15:29:53.137 INFO  [pool-1-thread-2] o.example.Services.CustomerServices - money was received
-2025-07-01 15:29:53.156 INFO  [pool-1-thread-2] org.example.DBRepository - Number of rows inserted: 1
-2025-07-01 15:29:53.156 INFO  [pool-1-thread-1] org.example.DBRepository - Number of rows inserted: 1
+2025-07-11 00:26:16.294 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 25764 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:26:16.301 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:26:17.523 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:26:17.539 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:26:17.539 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:26:17.539 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:26:17.593 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:26:17.593 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1172 ms
+2025-07-11 00:26:18.046 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:26:18.078 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:26:18.087 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.442 seconds (process running for 3.37)
+2025-07-11 00:26:30.389 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:26:30.401 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:27:39.933 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 37180 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:27:39.936 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:27:41.158 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:27:41.174 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:27:41.174 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:27:41.174 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:27:41.206 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:27:41.222 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1133 ms
+2025-07-11 00:27:41.664 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:27:41.692 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:27:41.701 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.428 seconds (process running for 3.261)
+2025-07-11 00:27:59.774 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:27:59.787 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:30:13.321 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 2856 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:30:13.325 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:30:14.852 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:30:14.874 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:30:14.876 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:30:14.877 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:30:14.925 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:30:14.925 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1461 ms
+2025-07-11 00:30:15.387 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:30:15.411 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:30:15.419 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.752 seconds (process running for 3.688)
+2025-07-11 00:30:19.003 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:30:19.013 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:34:40.370 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 35972 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:34:40.372 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:34:41.990 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:34:42.010 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:34:42.010 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:34:42.010 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:34:42.085 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:34:42.085 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1568 ms
+2025-07-11 00:34:42.742 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:34:42.757 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:34:42.773 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 3.125 seconds (process running for 4.075)
+2025-07-11 00:35:01.257 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:35:01.267 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:42:37.222 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 5700 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:42:37.222 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:42:38.482 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:42:38.498 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:42:38.498 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:42:38.514 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:42:38.562 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:42:38.562 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1201 ms
+2025-07-11 00:42:39.039 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:42:39.055 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:42:39.071 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.594 seconds (process running for 3.608)
+2025-07-11 00:43:02.699 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:43:02.701 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:51:17.298 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 50212 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:51:17.306 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:51:18.513 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:51:18.532 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:51:18.532 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:51:18.532 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:51:18.592 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:51:18.592 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1170 ms
+2025-07-11 00:51:19.100 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:51:19.132 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:51:19.132 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.451 seconds (process running for 3.361)
+2025-07-11 00:51:58.096 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:51:58.096 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:54:51.567 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 55644 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:54:51.567 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:54:52.657 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:54:52.673 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:54:52.673 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:54:52.673 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:54:52.721 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:54:52.721 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1057 ms
+2025-07-11 00:54:53.182 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:54:53.204 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:54:53.214 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.149 seconds (process running for 2.925)
+2025-07-11 00:55:12.793 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:55:12.801 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:56:23.674 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 47796 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:56:23.678 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:56:24.997 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:56:25.019 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:56:25.028 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:56:25.028 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:56:25.090 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:56:25.092 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1289 ms
+2025-07-11 00:56:25.616 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:56:25.645 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:56:25.661 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.578 seconds (process running for 3.368)
+2025-07-11 00:56:32.070 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:56:32.087 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:57:16.782 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 46296 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:57:16.784 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:57:17.919 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:57:17.935 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:57:17.935 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:57:17.935 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:57:17.983 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:57:17.983 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1095 ms
+2025-07-11 00:57:18.427 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:57:18.442 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:57:18.458 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.199 seconds (process running for 2.987)
+2025-07-11 00:57:24.420 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:57:24.420 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 00:57:58.369 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 44836 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 00:57:58.371 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 00:57:59.471 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 00:57:59.487 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:57:59.487 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 00:57:59.487 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 00:57:59.550 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 00:57:59.550 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1061 ms
+2025-07-11 00:58:00.073 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 00:58:00.091 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 00:58:00.105 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.265 seconds (process running for 2.976)
+2025-07-11 00:58:06.876 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 00:58:06.892 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 11:26:27.308 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 18144 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 11:26:27.308 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 11:26:28.448 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 11:26:28.464 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 11:26:28.464 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 11:26:28.464 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 11:26:28.504 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 11:26:28.504 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1095 ms
+2025-07-11 11:26:28.970 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 11:26:28.982 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 11:26:28.998 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.265 seconds (process running for 3.248)
+2025-07-11 11:26:34.020 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 11:26:34.031 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 11:33:04.085 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 20780 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 11:33:04.091 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 11:33:05.230 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 11:33:05.248 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 11:33:05.248 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 11:33:05.248 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 11:33:05.292 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 11:33:05.292 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1075 ms
+2025-07-11 11:33:05.698 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 11:33:05.721 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 11:33:05.721 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.21 seconds (process running for 3.0)
+2025-07-11 11:34:01.198 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 11:34:01.209 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 11:40:38.475 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 16268 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 11:40:38.480 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 11:40:39.515 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 11:40:39.539 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 11:40:39.539 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 11:40:39.539 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 11:40:39.595 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 11:40:39.595 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1004 ms
+2025-07-11 11:40:40.023 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 11:40:40.054 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 11:40:40.063 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.098 seconds (process running for 2.845)
+2025-07-11 11:40:40.969 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 11:40:40.983 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 11:45:54.286 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 14016 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 11:45:54.292 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 11:45:55.384 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 11:45:55.393 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 11:45:55.393 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 11:45:55.393 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 11:45:55.432 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 11:45:55.448 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1036 ms
+2025-07-11 11:45:55.978 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 11:45:56.010 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 11:45:56.025 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.31 seconds (process running for 3.099)
+2025-07-11 11:45:56.889 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 11:45:56.899 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:15:42.308 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 1296 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:15:42.312 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:15:43.534 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:15:43.534 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:15:43.550 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:15:43.550 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:15:43.598 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:15:43.598 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1168 ms
+2025-07-11 12:15:44.047 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:15:44.073 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:15:44.089 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.323 seconds (process running for 3.045)
+2025-07-11 12:15:47.001 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:15:47.005 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:17:54.935 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 20144 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:17:54.945 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:17:56.056 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:17:56.056 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:17:56.072 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:17:56.072 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:17:56.120 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:17:56.120 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1067 ms
+2025-07-11 12:17:56.577 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:17:56.593 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:17:56.593 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.189 seconds (process running for 2.939)
+2025-07-11 12:17:57.517 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:17:57.517 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:26:44.032 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 3980 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:26:44.040 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:26:45.134 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:26:45.150 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:26:45.150 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:26:45.150 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:26:45.182 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:26:45.182 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1020 ms
+2025-07-11 12:26:45.609 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:26:45.625 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:26:45.637 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.13 seconds (process running for 2.89)
+2025-07-11 12:26:58.556 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:26:58.578 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:27:22.406 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 7304 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:27:22.406 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:27:23.462 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:27:23.478 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:27:23.478 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:27:23.478 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:27:23.510 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:27:23.510 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 986 ms
+2025-07-11 12:27:23.924 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:27:23.953 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:27:23.961 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.065 seconds (process running for 2.785)
+2025-07-11 12:27:30.641 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:27:30.651 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:28:40.590 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 18648 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:28:40.600 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:28:41.657 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:28:41.665 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:28:41.665 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:28:41.665 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:28:41.712 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:28:41.712 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1009 ms
+2025-07-11 12:28:42.124 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:28:42.155 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:28:42.155 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.073 seconds (process running for 2.806)
+2025-07-11 12:28:45.564 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:28:45.564 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:30:38.083 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 16060 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:30:38.087 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:30:39.172 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:30:39.172 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:30:39.172 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:30:39.172 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:30:39.236 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:30:39.236 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1029 ms
+2025-07-11 12:30:39.641 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:30:39.673 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:30:39.673 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.226 seconds (process running for 3.001)
+2025-07-11 12:30:43.813 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:30:43.813 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:31:33.871 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 6176 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:31:33.871 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:31:35.012 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:31:35.028 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:31:35.028 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:31:35.028 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:31:35.075 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:31:35.075 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1076 ms
+2025-07-11 12:31:35.552 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:31:35.567 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:31:35.572 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.238 seconds (process running for 3.005)
+2025-07-11 12:31:43.300 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:31:43.306 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:32:31.493 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 20144 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:32:31.496 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:32:32.562 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:32:32.575 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:32:32.578 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:32:32.578 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:32:32.611 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:32:32.611 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1007 ms
+2025-07-11 12:32:33.054 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:32:33.085 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:32:33.085 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.145 seconds (process running for 2.821)
+2025-07-11 12:33:23.459 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:33:23.469 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:34:37.810 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 14248 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:34:37.817 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:34:38.969 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:34:38.981 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:34:38.985 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:34:38.985 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:34:39.032 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:34:39.032 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1094 ms
+2025-07-11 12:34:39.464 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:34:39.488 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:34:39.496 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.277 seconds (process running for 2.996)
+2025-07-11 12:35:18.260 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:35:18.272 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:36:58.996 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 20696 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:36:58.996 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:37:00.249 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:37:00.265 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:37:00.265 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:37:00.265 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:37:00.312 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:37:00.312 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1200 ms
+2025-07-11 12:37:00.724 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:37:00.755 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:37:00.765 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.357 seconds (process running for 3.097)
+2025-07-11 12:37:04.991 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:37:04.997 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 12:40:19.200 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 12256 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 12:40:19.200 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 12:40:20.353 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 12:40:20.369 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:40:20.369 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 12:40:20.369 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 12:40:20.432 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 12:40:20.432 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1117 ms
+2025-07-11 12:40:20.958 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 12:40:20.990 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 12:40:21.011 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.356 seconds (process running for 3.059)
+2025-07-11 12:40:31.124 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 12:40:31.129 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 13:19:41.581 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 3560 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 13:19:41.585 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 13:19:42.801 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 13:19:42.818 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 13:19:42.820 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 13:19:42.820 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 13:19:42.890 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 13:19:42.890 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1171 ms
+2025-07-11 13:19:43.470 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 13:19:43.498 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 13:19:43.506 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.467 seconds (process running for 3.337)
+2025-07-11 13:20:02.221 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 13:20:02.221 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 13:24:14.475 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 10888 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 13:24:14.475 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 13:24:15.554 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 13:24:15.575 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 13:24:15.575 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 13:24:15.575 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 13:24:15.617 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 13:24:15.617 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1047 ms
+2025-07-11 13:24:16.048 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 13:24:16.077 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 13:24:16.077 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.108 seconds (process running for 2.855)
+2025-07-11 13:24:38.699 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 13:24:38.711 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 13:25:28.145 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 14884 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 13:25:28.150 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 13:25:29.439 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 13:25:29.447 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 13:25:29.447 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 13:25:29.447 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 13:25:29.517 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 13:25:29.517 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1257 ms
+2025-07-11 13:25:30.018 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 13:25:30.034 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 13:25:30.050 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.414 seconds (process running for 3.097)
+2025-07-11 13:26:03.839 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 13:26:03.844 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 13:29:08.792 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 7028 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 13:29:08.797 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 13:29:09.919 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 13:29:09.919 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 13:29:09.919 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 13:29:09.919 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 13:29:09.966 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 13:29:09.966 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1051 ms
+2025-07-11 13:29:10.382 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 13:29:10.398 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 13:29:10.413 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.121 seconds (process running for 2.836)
+2025-07-11 13:29:13.925 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 13:29:13.932 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 14:06:22.721 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 18124 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 14:06:22.723 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 14:06:23.872 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 14:06:23.889 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 14:06:23.889 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 14:06:23.889 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 14:06:23.936 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 14:06:23.936 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1100 ms
+2025-07-11 14:06:24.494 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 14:06:24.521 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 14:06:24.538 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.325 seconds (process running for 3.057)
+2025-07-11 14:06:47.400 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 14:06:47.400 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 14:24:43.457 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 14952 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 14:24:43.466 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 14:24:44.622 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 14:24:44.638 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 14:24:44.638 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 14:24:44.638 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 14:24:44.688 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 14:24:44.688 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1102 ms
+2025-07-11 14:24:45.158 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 14:24:45.173 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 14:24:45.185 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.289 seconds (process running for 3.027)
+2025-07-11 14:24:48.138 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 14:24:48.138 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 14:39:38.524 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 4204 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 14:39:38.524 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 14:39:39.601 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 14:39:39.616 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 14:39:39.616 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 14:39:39.616 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 14:39:39.664 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 14:39:39.664 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1014 ms
+2025-07-11 14:39:40.077 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 14:39:40.104 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 14:39:40.110 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.115 seconds (process running for 2.854)
+2025-07-11 14:39:47.792 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 14:39:47.800 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-07-11 14:44:52.159 INFO  [main] org.example.TransfersApplication - Starting TransfersApplication using Java 23.0.2 with PID 21160 (C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL\target\classes started by jacsi in C:\Users\jacsi\Desktop\Projects\JAVA SPRINGBOOT LEARN\fileSharer\AppwithPostgreSQL)
+2025-07-11 14:44:52.168 INFO  [main] org.example.TransfersApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-11 14:44:53.323 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-07-11 14:44:53.349 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-07-11 14:44:53.349 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-11 14:44:53.349 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-11 14:44:53.387 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-11 14:44:53.387 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1121 ms
+2025-07-11 14:44:53.820 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-07-11 14:44:53.855 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-07-11 14:44:53.865 INFO  [main] org.example.TransfersApplication - Started TransfersApplication in 2.194 seconds (process running for 2.922)
+2025-07-11 14:44:54.135 INFO  [main] o.example.Services.CustomerServices - derry money was updated by 200! 
+2025-07-11 14:44:54.612 INFO  [main] o.example.Services.CustomerServices - money was sent
+2025-07-11 14:44:54.612 INFO  [main] o.example.Services.CustomerServices - money was received
+2025-07-11 14:44:54.628 INFO  [main] o.e.Repositories.TransfersRepository - Number of rows inserted: 1
+2025-07-11 14:44:54.628 INFO  [pool-2-thread-1] o.example.Services.CustomerServices - money was sent
+2025-07-11 14:44:54.628 INFO  [pool-2-thread-1] o.example.Services.CustomerServices - money was received
+2025-07-11 14:44:54.644 INFO  [pool-2-thread-2] o.example.Services.CustomerServices - money was sent
+2025-07-11 14:44:54.644 INFO  [pool-2-thread-2] o.example.Services.CustomerServices - money was received
+2025-07-11 14:44:54.644 INFO  [pool-2-thread-1] o.e.Repositories.TransfersRepository - Number of rows inserted: 1
+2025-07-11 14:44:54.644 INFO  [pool-2-thread-2] o.e.Repositories.TransfersRepository - Number of rows inserted: 1
+2025-07-11 14:45:00.563 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-11 14:45:00.571 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete

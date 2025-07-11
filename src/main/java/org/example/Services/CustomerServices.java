@@ -15,12 +15,14 @@ import java.util.HashMap;
 
 public class CustomerServices {
 
-    TransfersRepository dbrepository = new TransfersRepository();
-    CustomerEntityRepository customerentityrepository = new CustomerEntityRepository();
+    TransfersRepository transfersrepository;
+    CustomerEntityRepository customerentityrepository;
     TransferCalculator transactions = new TransferCalculator();
     final Logger logger = LoggerFactory.getLogger(CustomerServices.class);
 
-    public CustomerServices() throws SQLException {
+    public CustomerServices(CustomerEntityRepository customerentityrepository, TransfersRepository transfersrepository) throws SQLException {
+        this.customerentityrepository = customerentityrepository;
+        this.transfersrepository = transfersrepository;
     }
 
     public void depositMoney(String customerName, int depositAmount) throws SQLException {
@@ -31,7 +33,6 @@ public class CustomerServices {
         int newAmount = transactions.receiveMoneyTransaction(oldAmount, depositAmount);
         boolean fundsupdated = customerentityrepository.updateCustomerFunds(returnedId, newAmount);
         if (fundsupdated){
-            System.out.println(customerName + " money was updated!");
             logger.info("{} money was updated by {}! ", customerName, depositAmount);
         }
     }
@@ -86,13 +87,13 @@ public class CustomerServices {
 
     public void updateDbAfterTransfer(int senderreturnedId, String nameSenderCustomer, int receiverreturnedId, String nameReceiverCustomer, int amountToSend) throws SQLException {
 
-        dbrepository.insertSenderReceiverIntoTransferTotals(senderreturnedId, receiverreturnedId, amountToSend);
-        dbrepository.insertReceiverSenderIntoTransferTotals(senderreturnedId, receiverreturnedId, amountToSend);
-        dbrepository.createTransactionAudit(senderreturnedId, nameSenderCustomer, amountToSend, receiverreturnedId, nameReceiverCustomer);
+        transfersrepository.insertSenderReceiverIntoTransferTotals(senderreturnedId, receiverreturnedId, amountToSend);
+        transfersrepository.insertReceiverSenderIntoTransferTotals(senderreturnedId, receiverreturnedId, amountToSend);
+        transfersrepository.createTransactionAudit(senderreturnedId, nameSenderCustomer, amountToSend, receiverreturnedId, nameReceiverCustomer);
 
         boolean isfriends = customerentityrepository.checkIfHasFriend(senderreturnedId, receiverreturnedId);
         if (isfriends){
-            dbrepository.insertIntoTransfers(senderreturnedId, receiverreturnedId, amountToSend);
+            transfersrepository.insertIntoTransfers(senderreturnedId, receiverreturnedId, amountToSend);
         }
     }
 
@@ -113,6 +114,7 @@ public class CustomerServices {
     public void exchangeToOtherCurrency(){
         //TODO: create a new column in database if needed and do an exchange operation for selected amount.
     }
+}
 /*
     private void insufficientFundsMessage() {
         System.out.println("You don't have the amount selected to continue with this transaction!");
@@ -135,10 +137,10 @@ public class CustomerServices {
     public boolean acceptFriendRequest(Customer receiverCustomer, Customer senderCustomer) throws IOException {
 
     }
+
 */
 
-}
 // receiving could be a separate function, if something breaks, there should be some intermediary to hold the
 // transaction, for example, money is already being sent, but due to connection loss receiver didn't receive,
 // so money is put on hold somewhere? Or is it actually safer just to do in one go with one function, since
-// it will already gonna hold both customers objects ??
+// it will already gonna hold both customers objects

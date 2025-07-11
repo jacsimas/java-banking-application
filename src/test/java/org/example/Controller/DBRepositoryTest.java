@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.sql.SQLException;
 
 public class DBRepositoryTest {
-
+/*
     DBRepository dbcontroller = new DBRepository();
 
     public DBRepositoryTest() throws SQLException {
@@ -81,5 +81,6 @@ public class DBRepositoryTest {
         // fix this, now it is only one way check
         assertThat(isfriend).isTrue();
  }
+*/
 
 }

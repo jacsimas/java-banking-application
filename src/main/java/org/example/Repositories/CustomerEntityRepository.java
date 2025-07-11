@@ -1,7 +1,6 @@
 package org.example.Repositories;
 
 
-import org.example.DatabaseAPI;
 import org.example.Model.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,13 +9,13 @@ import java.sql.*;
 
 public class CustomerEntityRepository {
 
-    DatabaseAPI drivermanagerdb = new DatabaseAPI();
+    final Logger logger = LoggerFactory.getLogger(CustomerEntityRepository.class);
 
-    Connection connection = drivermanagerdb.connect();
+    private final Connection connection;
 
-    final Logger logger = LoggerFactory.getLogger(TransfersRepository.class);
-
-    public CustomerEntityRepository() throws SQLException {
+    public CustomerEntityRepository(Connection connection) throws SQLException {
+        this.connection = connection;
+        System.out.println("psql connection object: " + this.connection);
     }
 
     public void addCustomerRecord(String name, int money, String password) throws SQLException {
@@ -45,7 +44,6 @@ public class CustomerEntityRepository {
     }
 
     public Customer returnRecord(int customerId) throws SQLException {
-
         String sql = "SELECT id, nickname, money, password FROM customers WHERE id = ?";
 
         try (
@@ -64,9 +62,10 @@ public class CustomerEntityRepository {
         return null;
     }
 
-    public int findCustomerByUsername(String name){
+    public int findCustomerByUsername(String name) throws SQLException {
         int id = 0;
         String sql = "SELECT id FROM customers WHERE nickname = ?";
+
         try (
                 PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, name);
@@ -84,7 +83,7 @@ public class CustomerEntityRepository {
     }
 
 
-    public boolean updateCustomerFunds(int customerId, int newAmount) {  //void
+    public boolean updateCustomerFunds(int customerId, int newAmount) throws SQLException {  //void
 
         String sql = "UPDATE customers SET money = ? WHERE id = ? ";
         try ( //
@@ -103,6 +102,7 @@ public class CustomerEntityRepository {
     }
 
     public boolean checkIfHasFriend(int senderId, int receiverId) throws SQLException {
+
         String sql = "SELECT FROM friendships WHERE customer_id = ? AND friend_id = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
 

@@ -1,23 +1,21 @@
 package org.example.Repositories;
-import org.example.DatabaseAPI;
 import org.example.Model.TransactionAudit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.Assert;
 
 import java.sql.*;
 
 public class TransfersRepository {
 
-
-    DatabaseAPI drivermanagerdb = new DatabaseAPI();
-
-    Connection connection = drivermanagerdb.connect();
-
     final Logger logger = LoggerFactory.getLogger(TransfersRepository.class);
 
-    public TransfersRepository() throws SQLException {
-    }
+    private final Connection connection;
 
+    public TransfersRepository(Connection connection) throws SQLException {
+        this.connection = connection;
+        System.out.println("psql connection object: " + this.connection);
+    }
 
     public void createTransactionAudit(int senderId, String senderName, int moneyInCents, int getterId, String getterName) throws SQLException {
         String sql = "INSERT INTO transactions_audit (sender_id, sender_nickname, amount_sent, receiver_id, receiver_nickname) VALUES (?, ?, ?, ?, ?)";

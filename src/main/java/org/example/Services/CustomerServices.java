@@ -142,8 +142,3 @@ public class CustomerServices {
     }
 
 */
-
-// receiving could be a separate function, if something breaks, there should be some intermediary to hold the
-// transaction, for example, money is already being sent, but due to connection loss receiver didn't receive,
-// so money is put on hold somewhere? Or is it actually safer just to do in one go with one function, since
-// it will already gonna hold both customers objects

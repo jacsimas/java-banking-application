@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.example.Abstraction.CurrencyApiSource;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;

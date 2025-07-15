@@ -48,5 +48,4 @@ public class CurrencyEntity {
          https://www.exchangerate-api.com/docs/java-currency-api
          */
     }
-
 }

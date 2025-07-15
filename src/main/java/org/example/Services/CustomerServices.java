@@ -2,6 +2,7 @@ package org.example.Services;
 
 import org.example.Controller.TransferCalculator;
 import org.example.Currencies.CurrencyAPI;
+import org.example.Currencies.CurrencyEntity;
 import org.example.Repositories.CustomerEntityRepository;
 import org.example.Repositories.TransfersRepository;
 import org.example.Model.Customer;
@@ -17,12 +18,15 @@ public class CustomerServices {
 
     TransfersRepository transfersrepository;
     CustomerEntityRepository customerentityrepository;
-    TransferCalculator transactions = new TransferCalculator();
+    TransferCalculator transactions;
+    CurrencyEntity currencyEntity;
     final Logger logger = LoggerFactory.getLogger(CustomerServices.class);
 
-    public CustomerServices(CustomerEntityRepository customerentityrepository, TransfersRepository transfersrepository) throws SQLException {
+    public CustomerServices(CustomerEntityRepository customerentityrepository, TransfersRepository transfersrepository, TransferCalculator transactions, CurrencyEntity currencyEntity) throws SQLException {
         this.customerentityrepository = customerentityrepository;
         this.transfersrepository = transfersrepository;
+        this.transactions = transactions;
+        this.currencyEntity = currencyEntity;
     }
 
     public void depositMoney(String customerName, int depositAmount) throws SQLException {
@@ -99,8 +103,7 @@ public class CustomerServices {
 
     public void convertMyFundsToAllCurrencies(String nameCustomer) throws IOException, SQLException {
 
-        CurrencyAPI currencyapi = new CurrencyAPI();
-        HashMap<String, Double> currencies = currencyapi.getCurrencies();
+        HashMap<String, Double> currencies = currencyEntity.getCurrencies();
         int customerId = customerentityrepository.findCustomerByUsername(nameCustomer);
         Customer returnedCustomerObj = customerentityrepository.returnRecord(customerId);
         int customerFunds = returnedCustomerObj.moneyInCents();

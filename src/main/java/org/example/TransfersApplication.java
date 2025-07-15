@@ -1,7 +1,10 @@
 package org.example;
 
+import org.example.Abstraction.CurrencyApiSource;
 import org.example.Abstraction.DbApiSource;
+import org.example.Controller.TransferCalculator;
 import org.example.Currencies.CurrencyAPI;
+import org.example.Currencies.CurrencyEntity;
 import org.example.Repositories.CustomerEntityRepository;
 import org.example.Repositories.TransfersRepository;
 import org.example.Services.CustomerServices;
@@ -11,6 +14,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -20,17 +24,21 @@ import java.util.concurrent.Executors;
 @SpringBootApplication
 public class TransfersApplication {
 
+    private static final Logger log = LoggerFactory.getLogger(TransfersApplication.class);
+
     public static void main(String[] args) throws SQLException, IOException {
         SpringApplication.run(TransfersApplication.class, args);
 
-
+        TransferCalculator transactions = new TransferCalculator();
         DbApiSource databaseApi = new DatabaseAPI();
-
+        CurrencyApiSource currencyapi = new CurrencyAPI();
+        URL url = currencyapi.connectCurrencyApi();
+        CurrencyEntity currencyEntity = new CurrencyEntity(url);
         Connection connection = databaseApi.connect();
 
         CustomerEntityRepository customerentityrepository = new CustomerEntityRepository(connection);
         TransfersRepository transfersrepository = new TransfersRepository(connection);
-        CustomerServices customerServices = new CustomerServices(customerentityrepository, transfersrepository);
+        CustomerServices customerServices = new CustomerServices(customerentityrepository, transfersrepository, transactions, currencyEntity);
 
         // I tested if each repository class and services classes work after implementing Dependency Inversion
        System.out.println("transactions_audit data TEST: " + transfersrepository.returnTransactionAudit(15));
@@ -39,15 +47,13 @@ public class TransfersApplication {
 
         final Logger log = LoggerFactory.getLogger(TransfersApplication.class);
 
-        CurrencyAPI currencyapi = new CurrencyAPI();
-        HashMap<String, Double> currencies = currencyapi.getCurrencies();
-
+        HashMap<String, Double> currencies = currencyEntity.getCurrencies();
         for (Object i : currencies.keySet()) {
             System.out.println(i + " : " + currencies.get(i));
         }
 
-        CustomerServices customerserviceobj1 = new CustomerServices(customerentityrepository, transfersrepository);
-        CustomerServices customerserviceobj2 = new CustomerServices(customerentityrepository, transfersrepository);
+        CustomerServices customerserviceobj1 = new CustomerServices(customerentityrepository, transfersrepository, transactions, currencyEntity);
+        CustomerServices customerserviceobj2 = new CustomerServices(customerentityrepository, transfersrepository, transactions, currencyEntity);
 
         customerserviceobj1.makeTransfer("derry", "jack", 20);
 
@@ -72,10 +78,7 @@ public class TransfersApplication {
 
         pool.shutdown();
 
-
-
     }
-
 }
 
 

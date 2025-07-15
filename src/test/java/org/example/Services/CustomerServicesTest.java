@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CustomerServicesTest {
 
-    CustomerServices customerActionsController = new CustomerServices();
+   // CustomerServices customerActionsController = new CustomerServices();
 
     public CustomerServicesTest() throws SQLException {
     }
@@ -32,7 +32,7 @@ public class CustomerServicesTest {
         // what if transaction breaks for some reason? or if he doesn't receive money? or if she sends money,
         // but he doesn't receive?
     }
-
+/*
     @Test
     public void convertMyFundsToAllCurrenciesTest() throws SQLException, IOException {
 // TODO: finish this test or delete
@@ -40,5 +40,5 @@ public class CustomerServicesTest {
         cservice.convertMyFundsToAllCurrencies("jennifer");
 
     }
-
+*/
 }

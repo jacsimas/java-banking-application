@@ -11,7 +11,6 @@ import org.springframework.data.annotation.Id;
 public class TransactionAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int id;
     private int senderId;
     private String senderName;

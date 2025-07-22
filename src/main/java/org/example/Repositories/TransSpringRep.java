@@ -1,8 +1,8 @@
 package org.example.Repositories;
 
-import org.example.Model.TransactionAuditRecord;
+import org.example.Model.TransactionAudit;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TransSpringRep extends CrudRepository<TransactionAuditRecord, Long> {
-  TransactionAuditRecord findbyId(int id);
+public interface TransSpringRep extends CrudRepository<TransactionAudit, Long> {
+  TransactionAudit findbyId(int id);
 }

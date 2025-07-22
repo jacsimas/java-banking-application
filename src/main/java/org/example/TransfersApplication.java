@@ -1,25 +1,13 @@
 package org.example;
 
-import org.example.Abstraction.CurrencyApiSource;
-import org.example.Abstraction.DbApiSource;
-import org.example.Controller.TransferCalculator;
-import org.example.Currencies.CurrencyAPI;
-import org.example.Currencies.CurrencyEntity;
-import org.example.Repositories.CustomerEntityRepository;
-import org.example.Repositories.TransfersRepository;
-import org.example.Services.CustomerServices;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @SpringBootApplication
 public class TransfersApplication {
@@ -29,28 +17,37 @@ public class TransfersApplication {
     public static void main(String[] args) throws SQLException, IOException {
         SpringApplication.run(TransfersApplication.class, args);
 
-        TransferCalculator transactions = new TransferCalculator();
-        DbApiSource databaseApi = new DatabaseAPI();
+        final Logger log = LoggerFactory.getLogger(TransfersApplication.class);
+
+// jdbc:postgresql://172.31.224.1:5432/findb
+/*
+
         CurrencyApiSource currencyapi = new CurrencyAPI();
         URL url = currencyapi.connectCurrencyApi();
         CurrencyEntity currencyEntity = new CurrencyEntity(url);
+
+        HashMap<String, Double> currencies = currencyEntity.getCurrencies();
+        for (Object i : currencies.keySet()) {
+            System.out.println(i + " : " + currencies.get(i));
+        }
+
+
+        TransferCalculator transactions = new TransferCalculator();
+        DbApiSource databaseApi = new DatabaseAPI();
+
         Connection connection = databaseApi.connect();
 
         CustomerEntityRepository customerentityrepository = new CustomerEntityRepository(connection);
         TransfersRepository transfersrepository = new TransfersRepository(connection);
         CustomerServices customerServices = new CustomerServices(customerentityrepository, transfersrepository, transactions, currencyEntity);
 
+
         // I tested if each repository class and services classes work after implementing Dependency Inversion
        System.out.println("transactions_audit data TEST: " + transfersrepository.returnTransactionAudit(15));
        System.out.println("returnRecord customer data TEST: " + customerentityrepository.returnRecord(2));
        customerServices.depositMoney("derry", 200);
 
-        final Logger log = LoggerFactory.getLogger(TransfersApplication.class);
 
-        HashMap<String, Double> currencies = currencyEntity.getCurrencies();
-        for (Object i : currencies.keySet()) {
-            System.out.println(i + " : " + currencies.get(i));
-        }
 
         CustomerServices customerserviceobj1 = new CustomerServices(customerentityrepository, transfersrepository, transactions, currencyEntity);
         CustomerServices customerserviceobj2 = new CustomerServices(customerentityrepository, transfersrepository, transactions, currencyEntity);
@@ -78,16 +75,8 @@ public class TransfersApplication {
 
         pool.shutdown();
 
+
+ */
     }
 }
-
-
-//        may change to such type of structure later on:
-//        Thread t = new Thread(new Worker(new Calculator()));
-//        t.start();
-
-
-        // f.e. put:     "johnny", "jack", 3000
-        //               "derry", "jennifer", 3000
-
 

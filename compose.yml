@@ -1,7 +1,7 @@
 name: appwithpostgresql
 services:
   db:
-    image: postgres:14
+    image: postgres:16
     environment:
       POSTGRES_PASSWORD: example
     ports:

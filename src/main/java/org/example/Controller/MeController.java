@@ -1,6 +1,6 @@
 package org.example.Controller;
 
-import org.example.Model.Customer;
+import org.example.Model.Customers;
 
 public class MeController {
 

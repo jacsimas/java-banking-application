@@ -1,4 +1,4 @@
-package org.example.Repositories;
+package org.example.Services;
 
 public class TransferCalculator {
 

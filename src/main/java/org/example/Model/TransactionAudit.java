@@ -7,36 +7,47 @@ import jakarta.persistence.*;
 public class TransactionAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int senderId;
-    private String senderName;
-    private int moneyInCents;
-    private int getterId;
-    private String getterName;
+    private long id;
+    private int sender_id;
+    private String sender_nickname;
+    private int amount_sent;
+    private int receiver_id;
+    private String receiver_nickname;
     private String time;
 
-    public int getId() {
+    public TransactionAudit() {}
+
+    public TransactionAudit(int sender_id, String sender_nickname, int amount_sent, int receiver_id, String receiver_nickname, String time){
+        this.sender_id =sender_id;
+        this.sender_nickname = sender_nickname;
+        this.amount_sent=amount_sent;
+        this.receiver_id = receiver_id;
+        this.receiver_nickname=receiver_nickname;
+        this.time=time;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public int getSenderId() {
-        return senderId;
+    public int getSender_id() {
+        return sender_id;
     }
 
-    public String getSenderName() {
-        return senderName;
+    public String getSender_nickname() {
+        return sender_nickname;
     }
 
-    public int getMoneyInCents() {
-        return moneyInCents;
+    public int getAmount_sent() {
+        return amount_sent;
     }
 
-    public int getGetterId() {
-        return getterId;
+    public int getReceiver_id() {
+        return receiver_id;
     }
 
-    public String getGetterName() {
-        return getterName;
+    public String getReceiver_nickname() {
+        return receiver_nickname;
     }
 
     public String getTime() {

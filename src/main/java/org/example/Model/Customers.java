@@ -10,19 +10,19 @@ public class Customers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String user;
-    private int moneyInCents;
+    private String nickname;
+    private int money;
     private String password;
     private String email;
-    private boolean debitcard;
+    private boolean debit_card;
 
-    public Customers(Long id, String user,int moneyInCents, String password, String email, boolean debitcard){
-        this.id = id;
-        this.user = user;
-        this.moneyInCents = moneyInCents;
+    public Customers(String nickname,int money, String password, String email, boolean debit_card){
+
+        this.nickname = nickname;
+        this.money = money;
         this.password = password;
         this.email = email;
-        this.debitcard = debitcard;
+        this.debit_card = debit_card;
     }
 
     public Long getId() {
@@ -37,20 +37,20 @@ public class Customers {
         this.password = password;
     }
 
-    public int getMoneyInCents() {
-        return moneyInCents;
+    public int getMoney() {
+        return money;
     }
 
-    public void setMoneyInCents(int moneyInCents) {
-        this.moneyInCents = moneyInCents;
+    public void setMoney(int money) {
+        this.money = money;
     }
 
-    public String getUser() {
-        return user;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getEmail() {
@@ -61,11 +61,11 @@ public class Customers {
         this.email = email;
     }
 
-    public void setDebitcard(boolean debitcard) {
-        this.debitcard = debitcard;
+    public void setDebit_card(boolean debit_card) {
+        this.debit_card = debit_card;
     }
 
-    public boolean getDebitcard() {
-        return debitcard;
+    public boolean getDebit_card() {
+        return debit_card;
     }
 }

@@ -19,6 +19,11 @@ public class TransfersApplication {
 
         final Logger log = LoggerFactory.getLogger(TransfersApplication.class);
 
+   //     TransfersRepository transfersRepository = new TransfersRepository();
+      //  TransactionAuditController transactionAuditController = new TransactionAuditController(transfersRepository);
+
+
+
 // jdbc:postgresql://172.31.224.1:5432/findb
 /*
 
@@ -77,6 +82,7 @@ public class TransfersApplication {
 
 
  */
+
     }
 }
 

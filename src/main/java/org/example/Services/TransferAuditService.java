@@ -1,7 +1,8 @@
-package org.example.Repositories;
+package org.example.Services;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.example.Model.TransactionAudit;
+import org.example.Repositories.TransferAuditRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,4 +32,3 @@ public class TransferAuditService {
     }
 
 }
-// Cannot invoke "org.example.Repositories.TransSpringRep.findById(Object)" because "this.repository" is null

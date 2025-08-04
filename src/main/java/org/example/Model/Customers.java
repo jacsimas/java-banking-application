@@ -25,6 +25,9 @@ public class Customers {
         this.debit_card = debit_card;
     }
 
+    public Customers(){
+    }
+
     public Long getId() {
         return id;
     }

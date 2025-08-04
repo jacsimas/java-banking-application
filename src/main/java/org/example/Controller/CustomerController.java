@@ -43,9 +43,15 @@ public class CustomerController {
         return Optional.ofNullable(customerEntityService.getCustomersbyid(id));
     } // http://localhost:8080/customers/otherid?id=5
 
-    @PatchMapping("moneySent/{id}/{money}")
+    @PatchMapping("addmoney/{id}/{money}")
     public void send(@PathVariable long id, @PathVariable int money) {
         customerEntityService.changeAmount(id, money);
     }
+
+    @PatchMapping("moneySent/{sender}/{receiver}/{money}")
+    public void send(@PathVariable long sender, @PathVariable long receiver, @PathVariable int money) {
+        customerEntityService.updateSenderReceiver(sender, receiver, money);
+    }
+
 
 }

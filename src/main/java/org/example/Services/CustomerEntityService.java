@@ -5,6 +5,9 @@ import jakarta.transaction.Transactional;
 import org.example.Model.Customers;
 import org.example.Model.TransactionAudit;
 import org.example.Repositories.CustomerEntityRepository;
+import org.example.TransfersApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -16,9 +19,12 @@ import java.util.Optional;
 public class CustomerEntityService {
 
     CustomerEntityRepository customerEntityRepository;
+    TransferCalculator transferCalculator;
+    final Logger log = LoggerFactory.getLogger(CustomerEntityService.class);
 
-    public CustomerEntityService(CustomerEntityRepository customerEntityRepository){
+    public CustomerEntityService(CustomerEntityRepository customerEntityRepository, TransferCalculator transferCalculator){
     this.customerEntityRepository = customerEntityRepository;
+    this.transferCalculator = transferCalculator;
     }
 
     public List<Customers> allCustomers(){
@@ -50,4 +56,21 @@ public class CustomerEntityService {
         }
     }
 
+    public void updateSenderReceiver(long sender, long receiver, int money){
+        Customers senderCustomer = customerEntityRepository.findById(sender)
+                .orElseThrow(EntityNotFoundException::new);
+        Customers receiverCustomer = customerEntityRepository.findById(receiver)
+                .orElseThrow(EntityNotFoundException::new);
+        int senderAmount = senderCustomer.getMoney();
+        int receiverAmount = receiverCustomer.getMoney();
+        if (senderAmount > money){
+            int senderUpdatedAmount = transferCalculator.sendMoneyTransaction(senderAmount, money);
+            int receiverUpdatedAmount = transferCalculator.receiveMoneyTransaction(receiverAmount, money);
+            senderCustomer.setMoney(senderUpdatedAmount);
+            receiverCustomer.setMoney(receiverUpdatedAmount);
+        }
+        else {
+            log.error("Transfer wasn't successful, not enough money in sender's account: {}, amount to send: {}", senderAmount, money);
+        }
+    }
 }

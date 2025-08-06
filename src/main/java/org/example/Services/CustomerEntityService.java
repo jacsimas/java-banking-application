@@ -73,4 +73,9 @@ public class CustomerEntityService {
             log.error("Transfer wasn't successful, not enough money in sender's account: {}, amount to send: {}", senderAmount, money);
         }
     }
+
+    public void saveNewCustomer(Customers customer){
+        customerEntityRepository.save(customer);
+    }
+
 }

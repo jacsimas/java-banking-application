@@ -5,6 +5,7 @@ import org.example.Model.Customers;
 import org.example.Services.CustomerEntityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -53,5 +54,9 @@ public class CustomerController {
         customerEntityService.updateSenderReceiver(sender, receiver, money);
     }
 
+    @PostMapping("/register")
+    public void registerCustomer(@RequestBody Customers customer){
+        customerEntityService.saveNewCustomer(customer);
+    }
 
 }

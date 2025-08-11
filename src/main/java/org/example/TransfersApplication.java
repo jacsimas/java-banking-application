@@ -86,3 +86,33 @@ public class TransfersApplication {
     }
 }
 
+
+/*
+ <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>11.10.0</version>
+                <configuration>
+                    <serverId>flyway-db</serverId>
+                    <url>jdbc:postgresql://localhost:5431/findb</url>
+                    <!-- where V1__*.sql live -->
+                    <locations>
+                        <location>filesystem:src/main/resources/db.migration</location>
+                    </locations>
+                </configuration>
+                <dependencies>
+                <!-- 1️⃣  PostgreSQL database module -->
+                <dependency>
+                    <groupId>org.flywaydb</groupId>
+                    <artifactId>flyway-database-postgresql</artifactId>
+                    <version>11.10.0</version>
+                </dependency>
+                <!-- 2️⃣  JDBC driver (Flyway won’t ship it for licensing reasons) -->
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>42.7.4</version>
+                </dependency>
+                </dependencies>
+            </plugin>
+ */

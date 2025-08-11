@@ -49,14 +49,19 @@ public class CustomerController {
         customerEntityService.changeAmount(id, money);
     }
 
-    @PatchMapping("moneySent/{sender}/{receiver}/{money}")
-    public void send(@PathVariable long sender, @PathVariable long receiver, @PathVariable int money) {
-        customerEntityService.updateSenderReceiver(sender, receiver, money);
-    }
+//    @PatchMapping("moneySent/{sender}/{receiver}/{money}")
+//    public void send(@PathVariable long sender, @PathVariable long receiver, @PathVariable int money) {
+//        customerEntityService.updateSenderReceiver(sender, receiver, money);
+//    }
 
     @PostMapping("/register")
     public void registerCustomer(@RequestBody Customers customer){
         customerEntityService.saveNewCustomer(customer);
     }
+
+//    @PostMapping("/payments")
+//    public void makePayment(@RequestBody ){
+//// send a transaction JSON and save it in transactions_audit table, also use the data to update customers table
+//    }
 
 }

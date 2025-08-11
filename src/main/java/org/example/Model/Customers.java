@@ -15,16 +15,8 @@ public class Customers {
     private int money;
     private String password;
     private String email;
-    private boolean debit_card;
-
-    public Customers(String nickname,int money, String password, String email, boolean debit_card){
-
-        this.nickname = nickname;
-        this.money = money;
-        this.password = password;
-        this.email = email;
-        this.debit_card = debit_card;
-    }
+    private boolean debitCard;
+    private boolean creditCard;
 
     public Customers(){
     }
@@ -65,11 +57,22 @@ public class Customers {
         this.email = email;
     }
 
-    public void setDebit_card(boolean debit_card) {
-        this.debit_card = debit_card;
+    public void setDebitCard(boolean debitCard) {
+        this.debitCard = debitCard;
     }
 
     public boolean getDebit_card() {
-        return debit_card;
+        return debitCard;
     }
+
+    public boolean getCreditCard(){
+        return creditCard;
+    }
+
+    public void setCreditCard(boolean creditCard) {
+        this.creditCard = creditCard;
+    }
+
 }
+
+

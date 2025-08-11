@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/transactionaudit")
+@RequestMapping("/api/transaction-audit")
 public class TransactionAuditController {
 
     TransferAuditService transferAuditService;

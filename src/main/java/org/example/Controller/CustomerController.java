@@ -39,12 +39,12 @@ public class CustomerController {
         return customerEntityService.byNickname(nickname);
     }
 
-    @GetMapping("/otherid")
+    @GetMapping("/other-id")
     public Optional<Customers> getId(@RequestParam(value = "id", defaultValue = "1") long id) throws SQLException {
         return Optional.ofNullable(customerEntityService.getCustomersbyid(id));
     } // http://localhost:8080/customers/otherid?id=5
 
-    @PatchMapping("addmoney/{id}/{money}")
+    @PatchMapping("add-money/{id}/{money}")
     public void send(@PathVariable long id, @PathVariable int money) {
         customerEntityService.changeAmount(id, money);
     }

@@ -1,5 +1,4 @@
-target/
-services/db/
-logs/
-.idea/
+
+idea/
+>>>>>>> spring-boot
 resources/

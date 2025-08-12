@@ -1,7 +1,6 @@
 package org.example.Controller;
 
-import org.example.DBRepository;
-import org.example.Model.Customer;
+import org.example.Model.Customers;
 import org.junit.Test;
 
 import static org.junit.Assert.fail;

@@ -1,5 +1,8 @@
-package org.example.Controller;
+package org.example.Services;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class TransferCalculator {
 
     public int receiveMoneyTransaction( int receiverCustomerAmount, int transferAmount){

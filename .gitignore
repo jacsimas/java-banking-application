@@ -1,4 +1,2 @@
-
-idea/
->>>>>>> spring-boot
-resources/
+.idea/
+*.iml

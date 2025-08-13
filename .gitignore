@@ -3,3 +3,4 @@ services/db/
 logs/
 idea/
 resources/
+/src/main/resources/application.properties

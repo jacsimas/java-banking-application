@@ -2,7 +2,7 @@
 <project version="4">
   <component name="RemoteTargetsManager">
     <targets>
-      <target name="WSL" type="wsl" uuid="18942761-dd11-4180-a39b-a109c680b24d">
+      <target name="WSL" type="wsl" uuid="9518cad0-582e-483c-93ff-3790cfb37e83">
         <config>
           <option name="distributionMsId" value="Debian" />
         </config>

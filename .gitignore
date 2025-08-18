@@ -1,6 +1,6 @@
 /target/
 services/db/
 logs/
-idea/
+.idea/
 resources/
 /src/main/resources/application.properties

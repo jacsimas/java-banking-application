@@ -1,0 +1,1 @@
+[![Run maven verify](https://github.com/jacsimas/finnappwithpostgresql/actions/workflows/verify.yml/badge.svg)](https://github.com/jacsimas/finnappwithpostgresql/actions/workflows/verify.yml)

@@ -1,5 +1,5 @@
 /target/
 services/db/
 logs/
-idea/
+.idea/
 resources/

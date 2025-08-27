@@ -3,6 +3,7 @@ package org.example.Controller;
 import org.example.Model.Customers;
 import org.example.Services.CustomerEntityService;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,8 +39,9 @@ public class CustomerControllerTest {
     //TODO: THIS TEST DOWN BELOW FAILED, I WILL HAVE TO UPDATE IT
     @Test
     void  shouldRegisterCustomerTest() throws Exception {
-        this.mockMvc.perform(post("/customers/register")).andDo(print()).andExpect(status().isOk());
-
+        this.mockMvc.perform(post("/customers/register").contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"nickname\":\"dig\",\"password\":\"pass\",\"email\":\"dig@game.com\"}"))
+                .andExpect(status().isOk());
     }
 
     @Test

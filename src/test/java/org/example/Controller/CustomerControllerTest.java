@@ -33,15 +33,18 @@ public class CustomerControllerTest {
     @Test
      void shouldGetCustomerByIdTest() throws Exception {
 
-        this.mockMvc.perform(get("/customers/other-id?id=5")).andDo(print()).andExpect(status().isOk());
+        this.mockMvc.perform(get("/customers/other-id?id=5")).andExpect(status().isOk());
     }
 
     //TODO: THIS TEST DOWN BELOW FAILED, I WILL HAVE TO UPDATE IT
     @Test
     void  shouldRegisterCustomerTest() throws Exception {
-        this.mockMvc.perform(post("/customers/register").contentType(MediaType.APPLICATION_JSON)
+        this.mockMvc.
+                perform(post("/customers/register")
+                        .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"nickname\":\"dig\",\"password\":\"pass\",\"email\":\"dig@game.com\"}"))
-                .andExpect(status().isOk());
+                        .andDo(print())
+                        .andExpect(status().isOk());
     }
 
     @Test
@@ -57,4 +60,3 @@ public class CustomerControllerTest {
     }
 
 }
-//   .andExpect(content().string(containsString("Hello, World")));

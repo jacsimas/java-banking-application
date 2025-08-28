@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import jakarta.transaction.Transactional;
 import org.example.Model.Customers;
 import org.example.Services.CustomerEntityService;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
 public class CustomerControllerTest {
 
     @Autowired
@@ -37,7 +39,7 @@ public class CustomerControllerTest {
     }
 
     //TODO: THIS TEST DOWN BELOW FAILED, I WILL HAVE TO UPDATE IT
-    @Test
+    @org.junit.jupiter.api.Test
     void  shouldRegisterCustomerTest() throws Exception {
         this.mockMvc.
                 perform(post("/customers/register")

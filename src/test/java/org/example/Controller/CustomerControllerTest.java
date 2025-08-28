@@ -43,19 +43,20 @@ public class CustomerControllerTest {
                 perform(post("/customers/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"nickname\":\"dig\",\"password\":\"pass\",\"email\":\"dig@game.com\"}"))
+                        .andDo(print())
                         .andExpect(status().isOk());
     }
 
     @Test
     void shouldGetAll()  throws Exception {
 
-        this.mockMvc.perform(get("/customers")).andExpect(status().isOk());
+        this.mockMvc.perform(get("/customers")).andDo(print()).andExpect(status().isOk());
     }
 
     @Test
     void shouldSend ()  throws Exception {
 
-        this.mockMvc.perform(patch("/customers/add-money/1/100")).andExpect(status().isOk());
+        this.mockMvc.perform(patch("/customers/add-money/1/100")).andDo(print()).andExpect(status().isOk());
     }
 
 }

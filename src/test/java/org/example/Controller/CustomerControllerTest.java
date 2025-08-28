@@ -33,28 +33,29 @@ public class CustomerControllerTest {
     @Test
      void shouldGetCustomerByIdTest() throws Exception {
 
-        this.mockMvc.perform(get("/customers/other-id?id=5")).andDo(print()).andExpect(status().isOk());
+        this.mockMvc.perform(get("/customers/other-id?id=5")).andExpect(status().isOk());
     }
 
     //TODO: THIS TEST DOWN BELOW FAILED, I WILL HAVE TO UPDATE IT
     @Test
     void  shouldRegisterCustomerTest() throws Exception {
-        this.mockMvc.perform(post("/customers/register").contentType(MediaType.APPLICATION_JSON)
+        this.mockMvc.
+                perform(post("/customers/register")
+                        .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"nickname\":\"dig\",\"password\":\"pass\",\"email\":\"dig@game.com\"}"))
-                .andExpect(status().isOk());
+                        .andExpect(status().isOk());
     }
 
     @Test
     void shouldGetAll()  throws Exception {
 
-        this.mockMvc.perform(get("/customers")).andDo(print()).andExpect(status().isOk());
+        this.mockMvc.perform(get("/customers")).andExpect(status().isOk());
     }
 
     @Test
     void shouldSend ()  throws Exception {
 
-        this.mockMvc.perform(patch("/customers/add-money/1/100")).andDo(print()).andExpect(status().isOk());
+        this.mockMvc.perform(patch("/customers/add-money/1/100")).andExpect(status().isOk());
     }
 
 }
-//   .andExpect(content().string(containsString("Hello, World")));

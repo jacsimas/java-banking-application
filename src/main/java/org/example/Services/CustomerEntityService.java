@@ -3,13 +3,10 @@ package org.example.Services;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.example.Model.Customers;
-import org.example.Model.TransactionAudit;
 import org.example.Repositories.CustomerEntityRepository;
-import org.example.TransfersApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;

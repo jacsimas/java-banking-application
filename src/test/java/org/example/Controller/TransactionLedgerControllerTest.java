@@ -27,7 +27,7 @@ public class TransactionLedgerControllerTest {
     @MockitoBean
     private TransactionLedgerService transactionLedgerService;
 
-    @Test
+    @org.junit.jupiter.api.Test
     void shouldMakeTheTransfer() throws Exception {
 //        when(transactionLedgerService.updateTransactionLedger()).thenReturn("done");
         this.mockMvc.

@@ -44,7 +44,7 @@ public List<TransactionLedger> getAll(){
         return Optional.ofNullable(transactionLedgerService.getTransactionAudit(id));
     }
 
-    @PostMapping("/payments/transaction")
+    @PostMapping("/transaction")
     public void makeTheTransfer(@RequestBody TransactionLedger transactionLedger){
         transactionLedgerService.updateTransactionLedger(transactionLedger);
     }

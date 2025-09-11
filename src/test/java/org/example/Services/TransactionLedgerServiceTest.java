@@ -1,8 +1,6 @@
 package org.example.Services;
 
-import org.example.Model.TransactionLedger;
-import org.example.Repositories.TransferAuditRepository;
-import org.junit.Test;
+import org.example.Repositories.TransferLedgerRepository;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,7 +12,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class TransactionLedgerServiceTest {
 
     @Mock
-    TransferAuditRepository transferAuditRepository;
+    TransferLedgerRepository transferLedgerRepository;
     @InjectMocks
     TransactionLedgerService transactionLedgerService;
 

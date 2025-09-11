@@ -2,7 +2,7 @@ package org.example.Services;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.example.Model.TransactionLedger;
-import org.example.Repositories.TransferAuditRepository;
+import org.example.Repositories.TransferLedgerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,12 +11,10 @@ import java.util.Optional;
 @Service
 public class TransactionLedgerService {
 
-    TransferAuditRepository repository;
-    TransactionLedger transactionLedger;
+    TransferLedgerRepository repository;
 
-    public TransactionLedgerService(TransferAuditRepository repository, TransactionLedger transactionLedger){
+    public TransactionLedgerService(TransferLedgerRepository repository){
         this.repository = repository;
-        this.transactionLedger = transactionLedger;
     }
 
     public List<TransactionLedger> allAudits() {

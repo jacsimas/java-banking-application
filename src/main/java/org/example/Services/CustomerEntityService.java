@@ -71,8 +71,9 @@ public class CustomerEntityService {
         }
     }
 
-    public void saveNewCustomer(Customers customer){
+    public String saveNewCustomer(Customers customer){
         customerEntityRepository.save(customer);
-    }
+        return "The customer had been saved!";
 
+    }
 }

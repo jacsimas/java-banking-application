@@ -55,8 +55,8 @@ public class CustomerController {
 //    }
 
     @PostMapping("/register")
-    public void registerCustomer(@RequestBody Customers customer){
-        customerEntityService.saveNewCustomer(customer);
+    public String registerCustomer(@RequestBody Customers customer){
+        return customerEntityService.saveNewCustomer(customer);
     }
 
 //    @PostMapping("/payments")

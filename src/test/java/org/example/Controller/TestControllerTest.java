@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class CustomerControllerTest {
+public class TestControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -44,7 +44,7 @@ public class CustomerControllerTest {
         this.mockMvc.
                 perform(post("/customers/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"nickname\":\"dig\",\"password\":\"pass\",\"email\":\"dig@game.com\"}"))
+                        .content("{\"nickname\":\"boba\",\"password\":\"pass\",\"email\":\"boba@game.com\"}"))
                         .andDo(print())
                         .andExpect(status().isOk());
     }

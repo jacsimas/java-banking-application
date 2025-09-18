@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CustomerServicesTest {
+public class TestServicesTest {
 
    // CustomerServices customerActionsController = new CustomerServices();
 
-    public CustomerServicesTest() throws SQLException {
+    public TestServicesTest() throws SQLException {
     }
 
     @Test

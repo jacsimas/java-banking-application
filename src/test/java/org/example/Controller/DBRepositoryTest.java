@@ -1,13 +1,9 @@
 package org.example.Controller;
 
-import org.example.Model.Customers;
-import org.junit.Test;
-
 import static org.junit.Assert.fail;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import java.sql.SQLException;
 
 public class DBRepositoryTest {
 /*
@@ -37,7 +33,7 @@ public class DBRepositoryTest {
 //        String getpassword = customer.getPassword();
 //        int getmoney = customer.getMoneyInCents();
 
-        Customer returnedCustomer = dbcontroller.returnRecord(customerId);
+        Test returnedCustomer = dbcontroller.returnRecord(customerId);
         String nickname = returnedCustomer.user();
 
         assertThat(nickname).isEqualTo("johnny");

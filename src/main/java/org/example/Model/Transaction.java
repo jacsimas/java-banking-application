@@ -11,11 +11,11 @@ import java.util.UUID;
 public class Transaction {
 
     @Id
-    private UUID transaction_id;
+    private UUID id;
     private String type;
     private String status;
-    private UUID debtor_account_id;
-    private UUID  creditor_account_id;
+    private UUID debtorAccountId;
+    private UUID  creditorAccountId;
     private int amount;
     private String currency;
     private String reference;
@@ -45,20 +45,20 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public UUID getCreditor_account_id() {
-        return creditor_account_id;
+    public UUID getcreditorAccountId() {
+        return creditorAccountId;
     }
 
-    public void setCreditor_account_id(UUID creditor_account_id) {
-        this.creditor_account_id = creditor_account_id;
+    public void setcreditorAccountId(UUID creditorAccountId) {
+        this.creditorAccountId = creditorAccountId;
     }
 
-    public UUID getDebtor_account_id() {
-        return debtor_account_id;
+    public UUID getdebtorAccountId() {
+        return debtorAccountId;
     }
 
-    public void setDebtor_account_id(UUID debtor_account_id) {
-        this.debtor_account_id = debtor_account_id;
+    public void setdebtorAccountId(UUID debtorAccountId) {
+        this.debtorAccountId = debtorAccountId;
     }
 
     public String getStatus() {
@@ -77,11 +77,11 @@ public class Transaction {
         this.type = type;
     }
 
-    public UUID getTransaction_id() {
-        return transaction_id;
+    public UUID getid() {
+        return id;
     }
 
-    public void setTransaction_id(UUID transaction_id) {
-        this.transaction_id = transaction_id;
+    public void setid(UUID id) {
+        this.id = id;
     }
 }

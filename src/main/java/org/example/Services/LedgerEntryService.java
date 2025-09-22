@@ -15,14 +15,16 @@ public class LedgerEntryService {
     }
     public void updateLedgerEntryTable(Transaction transaction){
 
-        UUID transaction_id = transaction.getTransaction_id();
-        UUID debtor_account_id = transaction.getDebtor_account_id();
-        UUID  creditor_account_id = transaction.getCreditor_account_id();
+        UUID transaction_id = transaction.getid();
+        UUID debtor_account_id = transaction.getdebtorAccountId();
+        UUID  creditor_account_id = transaction.getcreditorAccountId();
         int amount = transaction.getAmount();
         String currency = transaction.getCurrency();
         String description = transaction.getReference();
 
+        //TODO: not sure yet how does this double entry thing work, will have to investigate
         ledgerEntryRepository.save(transaction_id, debtor_account_id, currency, amount, "DR", description);
+        ledgerEntryRepository.save(transaction_id, creditor_account_id, currency, amount, "CR", description);
 
     }
 

@@ -11,26 +11,26 @@ import java.util.UUID;
 public class Customer {
 
     @Id
-    private UUID customer_id;
-    private String full_name;
+    private UUID id;
+    private String fullName;
     private String email;
     private String phone;
-    private String kyc_status;
+    private String kycStatus;
 
-    public UUID getCustomer_id() {
-        return customer_id;
+    public UUID getid() {
+        return id;
     }
 
-    public void setCustomer_id(UUID customer_id) {
-        this.customer_id = customer_id;
+    public void setid(UUID id) {
+        this.id = id;
     }
 
-    public String getKyc_status() {
-        return kyc_status;
+    public String getkycStatus() {
+        return kycStatus;
     }
 
-    public void setKyc_status(String kyc_status) {
-        this.kyc_status = kyc_status;
+    public void setkycStatus(String kycStatus) {
+        this.kycStatus = kycStatus;
     }
 
     public String getPhone() {
@@ -41,12 +41,12 @@ public class Customer {
         this.phone = phone;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getfullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setfullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {

@@ -11,61 +11,61 @@ import java.util.UUID;
 public class Counterparty {
 
     @Id
-    private UUID counterparty_id;
-    private UUID customer_id;
-    private String display_name;
-    private UUID target_account_id;
-    private String external_iban;
-    private String external_bic;
+    private UUID id;
+    private UUID customerId;
+    private String displayName;
+    private UUID targetAccountId;
+    private String externalIban;
+    private String externalBic;
     private String tags;
-    private String created_at;
+    private String createdAt;
 
-    public UUID getCounterparty_id() {
-        return counterparty_id;
+    public UUID getid() {
+        return id;
     }
 
-    public void setCounterparty_id(UUID counterparty_id) {
-        this.counterparty_id = counterparty_id;
+    public void setid(UUID id) {
+        this.id = id;
     }
 
-    public String getDisplay_name() {
-        return display_name;
+    public String getdisplayName() {
+        return displayName;
     }
 
-    public void setDisplay_name(String display_name) {
-        this.display_name = display_name;
+    public void setdisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
-    public UUID getCustomer_id() {
-        return customer_id;
+    public UUID getcustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(UUID customer_id) {
-        this.customer_id = customer_id;
+    public void setcustomerId(UUID customerId) {
+        this.customerId = customerId;
     }
 
-    public UUID getTarget_account_id() {
-        return target_account_id;
+    public UUID gettargetAccountId() {
+        return targetAccountId;
     }
 
-    public void setTarget_account_id(UUID target_account_id) {
-        this.target_account_id = target_account_id;
+    public void settargetAccountId(UUID targetAccountId) {
+        this.targetAccountId = targetAccountId;
     }
 
-    public String getExternal_iban() {
-        return external_iban;
+    public String getexternalIban() {
+        return externalIban;
     }
 
-    public void setExternal_iban(String external_iban) {
-        this.external_iban = external_iban;
+    public void setexternalIban(String externalIban) {
+        this.externalIban = externalIban;
     }
 
-    public String getExternal_bic() {
-        return external_bic;
+    public String getexternalBic() {
+        return externalBic;
     }
 
-    public void setExternal_bic(String external_bic) {
-        this.external_bic = external_bic;
+    public void setexternalBic(String externalBic) {
+        this.externalBic = externalBic;
     }
 
     public String getTags() {
@@ -76,12 +76,12 @@ public class Counterparty {
         this.tags = tags;
     }
 
-    public String getCreated_at() {
-        return created_at;
+    public String getcreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setcreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
 }

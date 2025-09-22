@@ -11,29 +11,29 @@ import java.util.UUID;
 public class Account {
 
     @Id
-    private UUID account_id;
-    private long customer_id;
+    private UUID id;
+    private long customerId;
     private String currency;
     private String iban;
     private String bic;
     private int balance;
     private String status;
-    private String created_at;
+    private String createdAt;
 
-    public UUID getAccount_id() {
-        return account_id;
+    public UUID getid() {
+        return id;
     }
 
-    public void setAccount_id(UUID account_id) {
-        this.account_id = account_id;
+    public void setid(UUID id) {
+        this.id = id;
     }
 
-    public long getCustomer_id() {
-        return customer_id;
+    public long getcustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(long customer_id) {
-        this.customer_id = customer_id;
+    public void setcustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
     public String getCurrency() {
@@ -76,12 +76,12 @@ public class Account {
         this.status = status;
     }
 
-    public String getCreated_at() {
-        return created_at;
+    public String getcreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setcreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
 }

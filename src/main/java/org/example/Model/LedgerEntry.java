@@ -10,25 +10,25 @@ public class LedgerEntry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long entry_id;
-    private UUID transaction_id;
-    private UUID account_id;
+    private long id;
+    private UUID transactionId;
+    private UUID accountId;
     private String currency;
     private int amount;
     private String side;
-    private String event_time;
+    private String eventTime;
     private String description;
 
 
     public LedgerEntry() {
     }
 
-    public long getEntry_id() {
-        return entry_id;
+    public long getid() {
+        return id;
     }
 
-    public void setEntry_id(long entry_id) {
-        this.entry_id = entry_id;
+    public void setid(long id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -47,8 +47,8 @@ public class LedgerEntry {
         this.side = side;
     }
 
-    public String getEvent_time() {
-        return event_time;
+    public String geteventTime() {
+        return eventTime;
     }
 
     public int getAmount() {
@@ -67,19 +67,19 @@ public class LedgerEntry {
         this.currency = currency;
     }
 
-    public UUID getAccount_id() {
-        return account_id;
+    public UUID getaccountId() {
+        return accountId;
     }
 
-    public void setAccount_id(UUID account_id) {
-        this.account_id = account_id;
+    public void setaccountId(UUID accountId) {
+        this.accountId = accountId;
     }
 
-    public UUID getTransaction_id() {
-        return transaction_id;
+    public UUID gettransactionId() {
+        return transactionId;
     }
 
-    public void setTransaction_id(UUID transaction_id) {
-        this.transaction_id = transaction_id;
+    public void settransactionId(UUID transactionId) {
+        this.transactionId = transactionId;
     }
 }

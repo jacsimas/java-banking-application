@@ -12,7 +12,7 @@ jobs:
          distribution: 'temurin'
          cache: maven
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn -B -e -DtrimStackTrace=false clean test
       - name: Run tests
         run: mvn -B -e -DtrimStackTrace=false test
 
@@ -21,3 +21,8 @@ jobs:
         run: |
           echo "=== surefire reports ==="
           find . -type f -path "*/target/surefire-reports/*" -print -exec sh -c 'printf "\n--- %s ---\n" "$1"; sed -n "1,200p" "$1"' sh {} \;
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: surefire-reports
+          path: '**/target/surefire-reports/*'

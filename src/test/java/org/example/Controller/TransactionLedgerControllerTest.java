@@ -37,7 +37,7 @@ public class TransactionLedgerControllerTest {
                 .andExpect(status().isOk());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void shouldReturnData() throws Exception {
         this.mockMvc.
                 perform(get("/row/1")).andDo(print()).andExpect(status().isOk());

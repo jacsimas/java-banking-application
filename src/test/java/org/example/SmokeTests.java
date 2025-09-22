@@ -6,8 +6,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.Assert.assertTrue;
 
-@SpringBootTest
-@ActiveProfiles("test")
 public class SmokeTests {
 
     @Test

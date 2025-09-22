@@ -40,6 +40,7 @@ public class TestControllerTest {
         this.mockMvc.perform(get("/customers/other-id?id=5")).andExpect(status().isOk());
     }
 
+
     //TODO: THIS TEST DOWN BELOW FAILED, I WILL HAVE TO UPDATE IT
     @org.junit.jupiter.api.Test
     void  shouldRegisterCustomerTest() throws Exception {

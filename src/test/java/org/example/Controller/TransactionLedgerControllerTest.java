@@ -26,7 +26,7 @@ public class TransactionLedgerControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @org.junit.jupiter.api.Test
+    @Test
     void shouldMakeTheTransfer() throws Exception {
 //        when(transactionLedgerService.updateTransactionLedger()).thenReturn("done");
         this.mockMvc.

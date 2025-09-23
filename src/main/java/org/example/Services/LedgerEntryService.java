@@ -1,5 +1,6 @@
 package org.example.Services;
 
+import org.example.Model.LedgerEntry;
 import org.example.Model.Transaction;
 import org.example.Repositories.LedgerEntryRepository;
 
@@ -22,9 +23,24 @@ public class LedgerEntryService {
         String currency = transaction.getCurrency();
         String description = transaction.getReference();
 
+        LedgerEntry ledgerEntry = new LedgerEntry();
+
+        ledgerEntry.settransactionId(transaction_id);
+        ledgerEntry.setaccountId(debtor_account_id);
+        ledgerEntry.setAmount(amount);
+        ledgerEntry.setCurrency(currency);
+        ledgerEntry.setDescription(description);
+
         //TODO: not sure yet how does this double entry thing work, will have to investigate
-        ledgerEntryRepository.save(transaction_id, debtor_account_id, currency, amount, "DR", description);
-        ledgerEntryRepository.save(transaction_id, creditor_account_id, currency, amount, "CR", description);
+        ledgerEntryRepository.save(ledgerEntry);
+
+        ledgerEntry.settransactionId(transaction_id);
+        ledgerEntry.setaccountId(creditor_account_id);
+        ledgerEntry.setAmount(amount);
+        ledgerEntry.setCurrency(currency);
+        ledgerEntry.setDescription(description);
+
+        ledgerEntryRepository.save(ledgerEntry);
 
     }
 

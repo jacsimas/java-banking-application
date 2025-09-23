@@ -37,10 +37,10 @@ public class UnitTransactionLedgerControllerTest {
     @InjectMocks
     TransactionLedgerController transactionLedgerController;
 
-    @BeforeEach
-    void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(transactionLedgerController).build(); // no Spring Boot, no DB
-    }
+//    @BeforeEach
+//    void setUp() {
+//        mockMvc = MockMvcBuilders.standaloneSetup(transactionLedgerController).build(); // no Spring Boot, no DB
+//    }
 
     //TODO: this one doesn't work either.
 //    @Test

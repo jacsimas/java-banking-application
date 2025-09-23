@@ -34,10 +34,10 @@ public class UnitTestControllerTest {
     MockMvc mockMvc;
 
 
-    @BeforeEach
-    void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(customerController).build(); // no Spring Boot, no DB
-    }
+//    @BeforeEach
+//    void setUp() {
+//        mockMvc = MockMvcBuilders.standaloneSetup(customerController).build(); // no Spring Boot, no DB
+//    }
 
 //    @Test
 //    void shouldRegisterCustomer() {

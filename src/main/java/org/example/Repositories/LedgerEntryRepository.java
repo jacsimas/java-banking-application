@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface LedgerEntryRepository extends CrudRepository<LedgerEntry, Long> {
 
-    void save(UUID transactionId, UUID debtorAccountId, String currency, int amount, String dr, String description);
+    LedgerEntry save(LedgerEntry ledgerEntry);
 }

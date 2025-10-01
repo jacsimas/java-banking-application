@@ -4,10 +4,9 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
-jpa:
-  hibernate:
-    ddl-auto: create-drop   # build schema from your @Entity classes for tests
-
-  # Turn off Flyway for unit tests (so your Postgres-specific migrations are not run)
+  jpa:
+    hibernate:
+      ddl-auto: none
   flyway:
-    enabled: false
+    enabled: true
+    baseline-on-migrate: true

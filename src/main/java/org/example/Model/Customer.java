@@ -1,8 +1,7 @@
 package org.example.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
@@ -11,11 +10,15 @@ import java.util.UUID;
 public class Customer {
 
     @Id
+    @UuidGenerator(style = UuidGenerator.Style.TIME)
     private UUID id;
     private String fullName;
     private String email;
     private String phone;
     private String kycStatus;
+
+    public Customer() {
+    }
 
     public UUID getid() {
         return id;

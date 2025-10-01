@@ -1,11 +1,11 @@
-package org.example.Controller;
+package org.example.Controller.OldControllers;
 
 
-import org.example.Model.Customers;
-import org.example.Services.CustomerEntityService;
+import org.example.Model.OldModels.Customers;
+import org.example.ModelDTO.OldDTO.RequestCustomerDataDTO;
+import org.example.Services.OldService.CustomerEntityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -55,8 +55,8 @@ public class CustomerController {
 //    }
 
     @PostMapping("/register")
-    public String registerCustomer(@RequestBody Customers customer){
-        return customerEntityService.saveNewCustomer(customer);
+    public String registerCustomer(@RequestBody RequestCustomerDataDTO data){
+        return customerEntityService.saveNewCustomer(data);
     }
 
 //    @PostMapping("/payments")

@@ -1,4 +1,4 @@
-package org.example.Model;
+package org.example.Model.OldModels;
 
 public record TransactionAuditRecord(int id, int senderId, String senderName, int moneyInCents, int getterId, String getterName, String time) {
 

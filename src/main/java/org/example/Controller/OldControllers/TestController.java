@@ -1,8 +1,8 @@
-package org.example.Controller;
+package org.example.Controller.OldControllers;
 
 
-import org.example.Model.Test;
-import org.example.Services.TestService;
+import org.example.Model.OldModels.Test;
+import org.example.Services.OldService.TestService;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;

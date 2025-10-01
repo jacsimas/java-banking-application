@@ -1,7 +1,8 @@
-package org.example.Controller;
+package org.example.Controller.OldControllers;
 
-import org.example.Model.TransactionLedger;
-import org.example.Services.TransactionLedgerService;
+import org.example.Model.OldModels.TransactionLedger;
+import org.example.ModelDTO.OldDTO.RequestTransactionLedgerDTO;
+import org.example.Services.OldService.TransactionLedgerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +29,12 @@ public List<TransactionLedger> getAll(){
 }
 
     @GetMapping("row/{id}")
-    public Optional<TransactionLedger> byId(@PathVariable long id){
+    public TransactionLedger byId(@PathVariable long id){
     return transactionLedgerService.auditById(id);
     }
 
     @GetMapping("/else")
-    public Optional<TransactionLedger> showTransactionAudit(@RequestParam(value="id", defaultValue = "1") long id) throws SQLException {
+    public TransactionLedger showTransactionAudit(@RequestParam(value="id", defaultValue = "1") long id) throws SQLException {
 
     return transactionLedgerService.auditById(id);
     }
@@ -44,9 +45,10 @@ public List<TransactionLedger> getAll(){
         return Optional.ofNullable(transactionLedgerService.getTransactionAudit(id));
     }
 
+
     @PostMapping("/transaction")
-    public void makeTheTransfer(@RequestBody TransactionLedger transactionLedger){
-        transactionLedgerService.updateTransactionLedger(transactionLedger);
+    public void makeTheTransfer(@RequestBody RequestTransactionLedgerDTO data){
+    transactionLedgerService.updateTransactionLedger(data);
     }
 
 }

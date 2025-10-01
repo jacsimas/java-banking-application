@@ -1,8 +1,7 @@
-package org.example.Services;
+package org.example.Services.OldServicesT;
 
-import org.example.Model.TransactionLedger;
-import org.example.Repositories.TransferLedgerRepository;
-import org.junit.jupiter.api.Test;
+import org.example.Repositories.OldRepositories.TransferLedgerRepository;
+import org.example.Services.OldService.TransactionLedgerService;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -11,7 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-public class TransactionLedgerServiceTest {
+public class WebMvcTransactionLedgerServiceTest {
 
     @Mock
     TransferLedgerRepository transferLedgerRepository;

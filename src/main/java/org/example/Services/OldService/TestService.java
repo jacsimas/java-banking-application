@@ -1,6 +1,6 @@
-package org.example.Services;
+package org.example.Services.OldService;
 
-import org.example.Model.Test;
+import org.example.Model.OldModels.Test;
 import org.example.Repositories.TestRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

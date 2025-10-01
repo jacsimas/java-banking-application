@@ -1,6 +1,5 @@
-package org.example.Model;
+package org.example.Model.OldModels;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 

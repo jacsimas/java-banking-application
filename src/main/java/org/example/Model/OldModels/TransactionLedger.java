@@ -1,4 +1,4 @@
-package org.example.Model;
+package org.example.Model.OldModels;
 
 import jakarta.persistence.*;
 

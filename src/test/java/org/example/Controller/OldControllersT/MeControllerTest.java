@@ -1,8 +1,4 @@
-package org.example.Controller;
-
-import org.junit.Test;
-
-import java.io.FileReader;
+package org.example.Controller.OldControllersT;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

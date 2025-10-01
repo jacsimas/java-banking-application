@@ -1,6 +1,5 @@
 package org.example.Repositories;
 
-import org.example.Model.Customers;
 import org.example.Model.Transaction;
 import org.springframework.data.repository.CrudRepository;
 

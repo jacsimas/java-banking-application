@@ -3,6 +3,7 @@ package org.example.Model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
@@ -11,14 +12,16 @@ import java.util.UUID;
 public class Account {
 
     @Id
-    private UUID id;
-    private long customerId;
+    @UuidGenerator(style = UuidGenerator.Style.TIME)
+    private UUID id;    // does it share the same with customer table uuid?
+    private UUID customerId;
     private String currency;
     private String iban;
     private String bic;
     private int balance;
     private String status;
     private String createdAt;
+
 
     public UUID getid() {
         return id;
@@ -28,11 +31,11 @@ public class Account {
         this.id = id;
     }
 
-    public long getcustomerId() {
+    public UUID getcustomerId() {
         return customerId;
     }
 
-    public void setcustomerId(long customerId) {
+    public void setcustomerId(UUID customerId) {
         this.customerId = customerId;
     }
 

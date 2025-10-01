@@ -1,8 +1,6 @@
 package org.example.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -11,6 +9,7 @@ import java.util.UUID;
 public class Counterparty {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
     private UUID customerId;
     private String displayName;

@@ -1,9 +1,8 @@
-package org.example.Model;
+package org.example.Model.OldModels;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 

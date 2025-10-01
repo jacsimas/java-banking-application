@@ -1,10 +1,9 @@
-package org.example.Repositories;
+package org.example.Repositories.OldRepositories;
 
-import org.example.Model.Customers;
+import org.example.Model.OldModels.Customers;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface CustomerEntityRepository extends CrudRepository<Customers, Long> {
 

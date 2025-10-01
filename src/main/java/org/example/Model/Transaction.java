@@ -1,8 +1,6 @@
 package org.example.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -11,6 +9,7 @@ import java.util.UUID;
 public class Transaction {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
     private String type;
     private String status;
@@ -19,6 +18,10 @@ public class Transaction {
     private int amount;
     private String currency;
     private String reference;
+
+    public Transaction() {
+
+    }
 
 
     public String getReference() {
@@ -65,17 +68,17 @@ public class Transaction {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+//    public void setStatus(String status) {
+//        this.status = status;
+//    }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+//    public void setType(String type) {
+//        this.type = type;
+//    }
 
     public UUID getid() {
         return id;

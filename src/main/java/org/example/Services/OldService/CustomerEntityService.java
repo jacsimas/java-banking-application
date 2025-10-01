@@ -1,9 +1,10 @@
-package org.example.Services;
+package org.example.Services.OldService;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.example.Model.Customers;
-import org.example.Repositories.CustomerEntityRepository;
+import org.example.Model.OldModels.Customers;
+import org.example.ModelDTO.OldDTO.RequestCustomerDataDTO;
+import org.example.Repositories.OldRepositories.CustomerEntityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ public class CustomerEntityService {
 
     CustomerEntityRepository customerEntityRepository;
     TransferCalculator transferCalculator;
+    Customers customers = new Customers();
+
     final Logger log = LoggerFactory.getLogger(CustomerEntityService.class);
 
     public CustomerEntityService(CustomerEntityRepository customerEntityRepository, TransferCalculator transferCalculator){
@@ -71,9 +74,13 @@ public class CustomerEntityService {
         }
     }
 
-    public String saveNewCustomer(Customers customer){
-        customerEntityRepository.save(customer);
-        return "The customer had been saved!";
+    public String saveNewCustomer(RequestCustomerDataDTO data){
 
+        customers.setNickname(data.getNickname());
+        customers.setMoney(data.getMoney());
+        customers.setPassword(data.getPassword());
+        customers.setEmail(data.getEmail());
+        customerEntityRepository.save(customers);
+        return "The customer had been saved!";
     }
 }

@@ -13,3 +13,11 @@ jobs:
          cache: maven
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
+      - name: Run tests
+        run: mvn -B -e -DtrimStackTrace=false test
+
+      - name: Dump surefire reports on failure
+        if: failure()
+        run: |
+          echo "=== surefire reports ==="
+          find . -type f -path "*/target/surefire-reports/*" -print -exec sh -c 'printf "\n--- %s ---\n" "$1"; sed -n "1,200p" "$1"' sh {} \;

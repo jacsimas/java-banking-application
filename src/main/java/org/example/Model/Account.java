@@ -13,7 +13,7 @@ public class Account {
 
     @Id
     @UuidGenerator(style = UuidGenerator.Style.TIME)
-    private UUID id;    // does it share the same with customer table uuid?
+    private UUID id;
     private UUID customerId;
     private String currency;
     private String iban;
@@ -23,13 +23,13 @@ public class Account {
     private String createdAt;
 
 
-    public UUID getid() {
-        return id;
-    }
-
-    public void setid(UUID id) {
-        this.id = id;
-    }
+//    public UUID getid() {
+//        return id;
+//    }
+//
+//    public void setid(UUID id) {
+//        this.id = id;
+//    }
 
     public UUID getcustomerId() {
         return customerId;
@@ -86,5 +86,6 @@ public class Account {
     public void setcreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
+
 
 }

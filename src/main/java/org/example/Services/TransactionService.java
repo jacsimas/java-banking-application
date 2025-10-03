@@ -7,13 +7,19 @@ import org.example.Model.Transaction;
 import org.example.ModelDTO.TransactionDTO;
 import org.example.Repositories.AccountRepository;
 import org.example.Repositories.TransactionRepository;
+import org.example.TransfersApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Transactional
 @Service
 public class TransactionService {
+
+    final Logger log = LoggerFactory.getLogger(TransfersApplication.class);
 
     TransactionRepository transactionRepository;
     Transaction transaction = new Transaction();
@@ -33,21 +39,29 @@ public class TransactionService {
         transaction.setAmount(transactionDTO.getAmount());
         transaction.setCurrency(transactionDTO.getCurrency());
         transaction.setReference(transactionDTO.getReference());
+        transaction.setType(transactionDTO.getType());
+        transaction.setStatus(transactionDTO.getStatus());
 
-        transactionRepository.save(transaction);
-        return true;
+
+        UUID debtorsId = transactionDTO.getDebtorAccountId();
+        log.info("printing -- {}", debtorsId);
+
+        int amount = transactionDTO.getAmount();
+       if (sufficientFunds(debtorsId, amount))
+       {         transactionRepository.save(transaction);
+           return true; }
+        else return false;
     }
 
     public long getCount() {
         return transactionRepository.count();
     }
 
-    public boolean sufficientFunds(UUID debitor, int amount) {
+    public boolean sufficientFunds(UUID debtorAccountId, int amount) {
 
-        Account acc = accountRepository.findById(debitor)
-                .orElseThrow(() ->
-                        new EntityNotFoundException("Row " + debitor + " not found"));
-         if (acc.getBalance() >= amount){
+        Optional<Account> acc = accountRepository.findById(debtorAccountId);
+        Account account = acc.orElseThrow(() -> new RuntimeException("Account not found"));
+         if (account.getBalance() >= amount){
              return true;
          } else return false;
     }
